@@ -355,6 +355,7 @@ class AppConfig
 			self::initField(AppConfigAttribute::DB_ROOT_USER, 'root');
 			self::initField(AppConfigAttribute::DB_ROOT_PASS, 'root');
 			self::initField(AppConfigAttribute::DB1_CREATE_NEW_DB, 'y');
+			self::initField(AppConfigAttribute::DB1_CREATE_NEW_DWH, 'y');
 			self::initField(AppConfigAttribute::SPHINX_SERVER1, ($hostname == 'localhost' ? '127.0.0.1' : $hostname));
 			self::initField(AppConfigAttribute::ENVIRONMENT_PROTOCOL, 'http');
 		}
@@ -380,7 +381,11 @@ class AppConfig
 			}
 			
 			self::getTrueFalse(AppConfigAttribute::DB1_CREATE_NEW_DB, "Would you like to create a new kaltura database or use an exisiting one (choose yes (y) for new database)?", 'y');
-
+			if (AppConfigAttribute::DB1_CREATE_NEW_DB)
+			{
+				self::initField(AppConfigAttribute::DB1_CREATE_NEW_DWH, true);
+			}
+			
 			self::getInput(AppConfigAttribute::DB_ROOT_USER, "Database username (with create & write privileges on all database servers, leave empty for root)", "Database username cannot be empty, please enter again", InputValidator::createNonEmptyValidator(), 'root');
 
 			self::getInput(AppConfigAttribute::DB_ROOT_PASS, "Database password on all database servers (leave empty for no password)", null, null, null, true);
