@@ -9,6 +9,8 @@ class OsUtils {
 	const WINDOWS_OS = 'windows';
 	const LINUX_OS   = 'linux';
 
+	const OS_DISTRO_UBUNTU = 'UBUNTU';
+
 	private static $log = null;
 
 	public static function setLogPath($path)
@@ -108,6 +110,28 @@ class OsUtils {
 		return $dist;
 	}
 
+	/**
+	 * Get the linux raw distro name in upper case (e.g. UBUNTU),
+	 * or "" if not available.
+	 * @return string|""
+	 */
+	public static function getOsDistroName() {
+		if(!self::isLinux())
+			return null;
+		
+		$distroName = "";
+		$result = OsUtils::executeWithOutput("lsb_release -i"); // Expected output: "Distributor ID:\tDistributorID"
+		if ( $result )
+		{
+			$components = preg_split("|\t|", $result[0]);
+			$distroName = $components[1];
+			$distroName = strtoupper( $distroName );
+		}
+
+		Logger::logMessage(Logger::LEVEL_INFO, "OS Distro Name: " . $distroName);
+		return $distroName;
+	}
+	
 	// returns '32bit'/'64bit' according to current system architecture - if not found, default is 32bit
 	public static function getSystemArchitecture() {
 		$arch = php_uname('m');

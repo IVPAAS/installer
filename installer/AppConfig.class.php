@@ -26,6 +26,7 @@ class AppConfigAttribute
 	const SPHINX_BIN_DIR = 'SPHINX_BIN_DIR';
 
 	const OS_TYPE = 'OS_TYPE';
+	const OS_DISTRO = 'OS_DISTRO';
 	
 	const OS_ROOT_USER = 'OS_ROOT_USER';
 	const OS_APACHE_USER = 'OS_APACHE_USER';
@@ -263,6 +264,15 @@ class AppConfig
 		}
 		
 		self::initField(AppConfigAttribute::OS_TYPE, OsUtils::getOsName());
+		$distroName = OsUtils::getOsDistroName();
+		self::initField(AppConfigAttribute::OS_DISTRO, $distroName);
+		
+		// Override apache values in Ubuntu
+		if ( $distroName == OsUtils::OS_DISTRO_UBUNTU )
+		{
+			// Set the apache user to www-data
+			self::initField(AppConfigAttribute::OS_APACHE_USER, 'www-data');
+		}		
 	}
 
 	public static function validateActivationKey($key)
