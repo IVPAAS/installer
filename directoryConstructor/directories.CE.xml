@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <base skipFilesMode="true" skipFilesOwner="true">
-	<installer group="${OS_ROOT_GROUP}" user="${OS_ROOT_USER}" mode="0700" filesMode="0600" scriptsMode="0700" gitPath="/kaltura/installer.git" gitBranch="IX-9.2.1" />
+	<installer group="${OS_ROOT_GROUP}" user="${OS_ROOT_USER}" mode="0700" filesMode="0600" scriptsMode="0700" gitPath="/kaltura/installer.git" gitBranch="IX-9.6.0" />
 	<package group="${OS_KALTURA_GROUP}" user="${OS_ROOT_USER}" mode="0750" filesMode="0640" scriptsMode="0750" skipFilesMode="true" skipFilesOwner="true" sourcePath="directories.xml" overwrite="true" />
-</base>
+</base>
