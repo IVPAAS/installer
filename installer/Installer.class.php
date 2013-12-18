@@ -73,11 +73,17 @@ class Installer
 		foreach($this->components as $component)
 		{
 			if(isset($this->installConfig[$component]) && isset($this->installConfig[$component]['users']))
-				$users = array_merge($users, $this->installConfig[$component]['users']);
+			{
+				$tmpUsers = array_merge($users, $this->installConfig[$component]['users']);
+				foreach ( $tmpUsers as $user )
+				{
+					$users[] = AppConfig::replaceTokensInString( $user );
+				}
+			}
 		}
 		$users = implode(',', array_unique($users));
 				
-		Logger::logMessage(Logger::LEVEL_USER, "Creating operating system users");
+		Logger::logMessage(Logger::LEVEL_USER, "Creating operating system users: " . $users);
 		$dir = __DIR__ . '/../osUsers';
 		return OsUtils::phing($dir, 'Create-Users', array('users' => $users));
 	}
