@@ -400,7 +400,12 @@ class OsUtils {
 		foreach ($serviceName as $service)
 		{
 			$output = OsUtils::executeWithOutput("service --status-all 2>&1 | grep -c $service");
-			$count = trim(reset($output));
+			if ( is_array($output) )
+			{
+				$output = reset( $output );
+			}
+			
+			$count = trim($output);
 			if(is_numeric($count) && intval($count) > 0)
 			{
 				Logger::logMessage(Logger::LEVEL_INFO, "Service $service found");
