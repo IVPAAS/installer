@@ -17,6 +17,7 @@ class AppConfigAttribute
 	const ETL_HOME_DIR = 'ETL_HOME_DIR';
 
 	const PHP_BIN = 'PHP_BIN';
+	const PHP_CONF_DIR = 'PHP_CONF_DIR';
 	const PEAR_BIN = 'PEAR_BIN';
 	const HTTPD_BIN = 'HTTPD_BIN';
 	const LOG_ROTATE_BIN = 'LOG_ROTATE_BIN';
@@ -272,6 +273,7 @@ class AppConfig
 		{
 			// Set the apache user to www-data
 			self::initField(AppConfigAttribute::OS_APACHE_USER, 'www-data');
+			self::initField(AppConfigAttribute::PHP_CONF_DIR, '/etc/php5/conf.d');
 		}		
 	}
 
@@ -480,6 +482,7 @@ class AppConfig
 		self::initField(AppConfigAttribute::DWH_DIR, self::get(AppConfigAttribute::BASE_DIR) . '/dwh');
 		self::initField(AppConfigAttribute::ETL_HOME_DIR, self::get(AppConfigAttribute::BASE_DIR) . '/dwh'); // For backward compatibility
 		self::initField(AppConfigAttribute::SPHINX_BIN_DIR, self::get(AppConfigAttribute::BIN_DIR) . '/sphinx');
+		self::initField(AppConfigAttribute::PHP_CONF_DIR, '/etc/php.d');
 
 		self::initField(AppConfigAttribute::IMAGE_MAGICK_BIN_DIR, "/usr/bin");
 		self::initField(AppConfigAttribute::CURL_BIN_DIR, "/usr/bin");
