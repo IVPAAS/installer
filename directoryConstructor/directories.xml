@@ -65,7 +65,7 @@
 				<v1.1.2 svnPath="/usr/local/kalprod/flash/kclip/v1.1.2" skipFilesOwner="true" skipFilesMode="true" />
 			</kclip>
 			<kmc skipFilesOwner="true" skipFilesMode="true">
-				<v5.36.10 svnPath="/usr/local/kalprod/flash/kmc/v5.36.10" skipFilesOwner="true" skipFilesMode="true" />
+				<v5.37 svnPath="/usr/local/kalprod/flash/kmc/v5.37" skipFilesOwner="true" skipFilesMode="true" />
 				<login skipFilesOwner="true" skipFilesMode="true">
 					<v1.2.3 svnPath="/usr/local/kalprod/flash/kmc/login/v1.2.3" skipFilesOwner="true" skipFilesMode="true" />
 				</login>
