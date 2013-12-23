@@ -42,7 +42,7 @@
 				<v3.8.9 svnPath="/usr/local/kalprod/flash/kdp3/v3.8.9" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.9.1 svnPath="/usr/local/kalprod/flash/kdp3/v3.9.1" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.9.2 svnPath="/usr/local/kalprod/flash/kdp3/v3.9.2" skipFilesOwner="true" skipFilesMode="true" />
-				<v3.9.4 gitPath="/kaltura/kdp.git" gitBranch="v.9.4" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.9.4 gitPath="/kaltura/kdp.git" gitBranch="v3.9.4" skipFilesOwner="true" skipFilesMode="true" />
 			</kdp3>
 			<kdp3plugins  svnPath="/usr/local/kalprod/flash/kdp3plugins" skipFilesOwner="true" skipFilesMode="true" />
 			<kdp3wrapper skipFilesOwner="true" skipFilesMode="true">
