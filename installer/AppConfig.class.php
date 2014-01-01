@@ -274,6 +274,7 @@ class AppConfig
 			// Set the apache user to www-data
 			self::initField(AppConfigAttribute::APACHE_SERVICE, 'apache2');
 			self::initField(AppConfigAttribute::OS_APACHE_USER, 'www-data');
+			self::initField(AppConfigAttribute::OS_APACHE_UID, 33);
 			self::initField(AppConfigAttribute::PHP_CONF_DIR, '/etc/php5/conf.d');
 		}		
 	}
