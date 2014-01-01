@@ -116,7 +116,7 @@ class OsUtils {
 	public static function getOsDistroName() {
 		if(!self::isLinux())
 			return null;
-		
+	
 		$distroName = "";
 		$result = OsUtils::executeWithOutput("lsb_release -i"); // Expected output: "Distributor ID:\tDistributorID"
 		if ( $result )
@@ -124,7 +124,7 @@ class OsUtils {
 			$components = preg_split("|\t|", $result[0]);
 			$distroName = $components[1];
 		}
-
+	
 		Logger::logMessage(Logger::LEVEL_INFO, "OS Distro Name: " . $distroName);
 		return $distroName;
 	}
@@ -283,7 +283,16 @@ class OsUtils {
 		}
 			
 		if($alwaysStartAutomtically)
-			OsUtils::execute("chkconfig $service on");
+		{
+			if ( OsUtils::isDebianDistro() )
+			{
+				OsUtils::execute("update-rc.d $service defaults");
+			}
+			else
+			{
+				OsUtils::execute("chkconfig $service on");
+			}
+		}
 
 		return OsUtils::execute("/etc/init.d/$service restart");
 	}
