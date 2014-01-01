@@ -268,8 +268,8 @@ class AppConfig
 		$distroName = OsUtils::getOsDistroName();
 		self::initField(AppConfigAttribute::OS_DISTRO, $distroName);
 		
-		// Override apache values in Ubuntu
-		if ( $distroName == OsUtils::OS_DISTRO_UBUNTU )
+		// Override apache values in Ubuntu/Debian distros
+		if ( OsUtils::isDebianDistro() )
 		{
 			// Set the apache user to www-data
 			self::initField(AppConfigAttribute::APACHE_SERVICE, 'apache2');

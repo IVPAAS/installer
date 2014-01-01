@@ -9,9 +9,8 @@ class OsUtils {
 	const WINDOWS_OS = 'windows';
 	const LINUX_OS   = 'linux';
 
-	const OS_DISTRO_UBUNTU = 'UBUNTU';
-
 	private static $log = null;
+	private static $isDebianDistro = null; // null while not determined, and then true/false
 
 	public static function setLogPath($path)
 	{
@@ -111,8 +110,7 @@ class OsUtils {
 	}
 
 	/**
-	 * Get the linux raw distro name in upper case (e.g. UBUNTU),
-	 * or "" if not available.
+	 * Get the linux raw distro name, or and empty string if not available.
 	 * @return string|""
 	 */
 	public static function getOsDistroName() {
@@ -125,11 +123,32 @@ class OsUtils {
 		{
 			$components = preg_split("|\t|", $result[0]);
 			$distroName = $components[1];
-			$distroName = strtoupper( $distroName );
 		}
 
 		Logger::logMessage(Logger::LEVEL_INFO, "OS Distro Name: " . $distroName);
 		return $distroName;
+	}
+
+	/**
+	 * Determine if the OS is a Linux distro of either Debian or Ubuntu
+	 * @return boolean
+	 */
+	public static function isDebianDistro()
+	{
+		if ( self::$isDebianDistro === null ) // Not yet determined?
+		{
+			if ( ! self::isLinux() )
+			{
+				self::$isDebianDistro = false;
+			}
+			else
+			{	
+				$result = OsUtils::executeWithOutput( 'if lsb_release -i | grep -iq ubuntu; then echo "deb"; fi' );
+				self::$isDebianDistro = ($result === "deb");
+			}
+		}
+				
+		return self::$isDebianDistro;
 	}
 	
 	// returns '32bit'/'64bit' according to current system architecture - if not found, default is 32bit
