@@ -144,7 +144,15 @@ class OsUtils {
 			else
 			{	
 				$result = OsUtils::executeWithOutput( 'if lsb_release -i | grep -iq ubuntu; then echo "deb"; fi' );
-				self::$isDebianDistro = ($result === "deb");
+
+				if ( count($result) > 0 && $result[0] === "deb" )
+				{ 
+					self::$isDebianDistro = true;
+				}
+				else
+				{ 
+					self::$isDebianDistro = false;
+				}
 			}
 		}
 				
