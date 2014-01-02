@@ -143,7 +143,7 @@ class OsUtils {
 			}
 			else
 			{	
-				$result = OsUtils::executeWithOutput( 'if lsb_release -i | grep -iq ubuntu; then echo "deb"; fi' );
+				$result = OsUtils::executeWithOutput( 'if lsb_release -i | grep -iq "Ubuntu\|Debian"; then echo "deb"; fi' );
 
 				if ( count($result) > 0 && $result[0] === "deb" )
 				{ 
