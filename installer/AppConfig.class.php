@@ -105,6 +105,7 @@ class AppConfigAttribute
 	const TEMPLATE_PARTNER_ADMIN_SECRET = 'TEMPLATE_PARTNER_ADMIN_SECRET';
 	const MONITOR_PARTNER_SECRET = 'MONITOR_PARTNER_SECRET';
 	const MONITOR_PARTNER_ADMIN_SECRET = 'MONITOR_PARTNER_ADMIN_SECRET';
+	const MEDIA_PARTNER_ADMIN_SECRET = 'MEDIA_PARTNER_ADMIN_SECRET';
 
 	const PARTNERS_USAGE_REPORT_SEND_FROM = 'PARTNERS_USAGE_REPORT_SEND_FROM';
 	const PARTNERS_USAGE_REPORT_SEND_TO = 'PARTNERS_USAGE_REPORT_SEND_TO';
@@ -636,6 +637,7 @@ class AppConfig
 			self::initField(AppConfigAttribute::TEMPLATE_PARTNER_ADMIN_SECRET, self::generateSecret());
 			self::initField(AppConfigAttribute::MONITOR_PARTNER_SECRET, self::generateSecret());
 			self::initField(AppConfigAttribute::MONITOR_PARTNER_ADMIN_SECRET, self::generateSecret());
+			self::initField(AppConfigAttribute::MEDIA_PARTNER_ADMIN_SECRET, self::generateSecret());
 		}
 		else
 		{
@@ -680,6 +682,12 @@ class AppConfig
 				self::initField(AppConfigAttribute::MONITOR_PARTNER_SECRET, $output[0]);
 			else
 				self::initField(AppConfigAttribute::MONITOR_PARTNER_SECRET, self::generateSecret());
+			
+			$output = OsUtils::executeWithOutput('echo "select admin_secret from partner where id=-5" | ' . self::get(AppConfigAttribute::MYSQL_BIN) . ' -h' . self::get(AppConfigAttribute::DB1_HOST) . ' -P' . self::get(AppConfigAttribute::DB1_PORT) . ' -u' . self::get(AppConfigAttribute::DB1_USER) . ' -p' . self::get(AppConfigAttribute::DB1_PASS) . ' ' . self::get(AppConfigAttribute::DB1_NAME) . ' --skip-column-names');
+			if(count($output) && $output[0])
+				self::initField(AppConfigAttribute::MEDIA_PARTNER_ADMIN_SECRET, $output[0]);
+			else
+				self::initField(AppConfigAttribute::MEDIA_PARTNER_ADMIN_SECRET, self::generateSecret());
 		}
 
 		self::initField(AppConfigAttribute::VERIFY_INSTALLATION, true);

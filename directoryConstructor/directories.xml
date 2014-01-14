@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <base user="${OS_ROOT_USER}" mode="0750" filesMode="0640" scriptsMode="0750" skipFilesMode="true">
-	<app mode="0750" user="${OS_ROOT_USER}"	gitPath="/kaltura/server.git" gitBranch="IX-9.6.0" skipFilesOwner="true">
+	<app mode="0750" user="${OS_ROOT_USER}"	gitPath="/kaltura/server.git" gitBranch="IX-9.8.0" skipFilesOwner="true">
 		<configurations skipFilesOwner="true" skipFilesMode="true" >
 			<monit skipFilesOwner="true" mode="0750" filesMode="0600" />
 		</configurations>
