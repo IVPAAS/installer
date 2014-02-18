@@ -139,8 +139,10 @@ class AppConfigAttribute
 	const POST_INST_ADMIN_CONSOLE_ADMIN_MAIL = 'POST_INST_ADMIN_CONSOLE_ADMIN_MAIL';
 	const ENVIRONMENT_NAME = 'ENVIRONMENT_NAME';
 	const APACHE_SERVICE = 'APACHE_SERVICE';
+	const APACHE_PID_PATH = 'APACHE_PID_PATH';
+	const APACHE_BINARY = 'APACHE_BINARY';
 	const ENVIRONMENT_PROTOCOL = 'ENVIRONMENT_PROTOCOL';
-	const INSTALLED_HOSNAME = 'INSTALLED_HOSNAME';
+	const INSTALLED_HOSTNAME = 'INSTALLED_HOSTNAME';
 
 	const CONTACT_URL = 'CONTACT_URL';
 	const SIGNUP_URL = 'SIGNUP_URL';
@@ -713,7 +715,7 @@ class AppConfig
 
 		self::set(AppConfigAttribute::BATCH_SCHEDULER_TEMPLATE, $scheulderTemplate);
 		self::set(AppConfigAttribute::BATCH_SCHEDULER_ID, $scheulderId);
-		self::set(AppConfigAttribute::INSTALLED_HOSNAME, self::getHostname());
+		self::set(AppConfigAttribute::INSTALLED_HOSTNAME, self::getHostname());
 		self::set(AppConfigAttribute::APP_REMOTE_ADDR_HEADER_SALT, uniqid());
 		
 		
