@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <base user="${OS_ROOT_USER}" mode="0750" filesMode="0640" scriptsMode="0750" skipFilesMode="true">
-	<app mode="0750" user="${OS_ROOT_USER}"	gitPath="/kaltura/server.git" gitBranch="IX-9.2.1" skipFilesOwner="true">
+	<app mode="0750" user="${OS_ROOT_USER}"	gitPath="/kaltura/server.git" gitBranch="IX-9.11.0" skipFilesOwner="true">
 		<configurations skipFilesOwner="true" skipFilesMode="true" >
 			<monit skipFilesOwner="true" mode="0750" filesMode="0600" />
 		</configurations>
@@ -12,6 +12,8 @@
 			<v1.0.5_saas svnPath="/usr/local/kalprod/apps/clipapp/v1.0.5_saas" skipFilesOwner="true" skipFilesMode="true" />
 			<v1.0.8 svnPath="/usr/local/kalprod/apps/clipapp/v1.0.7" skipFilesOwner="true" skipFilesMode="true" />
 			<v1.0.8_saas svnPath="/usr/local/kalprod/apps/clipapp/v1.0.7_saas" skipFilesOwner="true" skipFilesMode="true" />
+			<v1.3 gitPath="/kaltura/clipapp" archive="v1.3" skipFilesOwner="true" skipFilesMode="true" />
+			<v1.3_saas svnPath="/usr/local/kalprod/apps/clipapp/v1.0_saas" skipFilesOwner="true" skipFilesMode="true" />
 		</clipapp>
 	</apps>
 	<log user="${OS_KALTURA_USER}" mode="0770" filesMode="0660" skipFilesOwner="true">
@@ -36,12 +38,7 @@
 				<v1.0 svnPath="/usr/local/kalprod/flash/cvfsdk/v1.0" skipFilesOwner="true" skipFilesMode="true" />
 			</cvfsdk>
 			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.5.21 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.21" skipFilesOwner="true" skipFilesMode="true" />
-				<v3.8 svnPath="/usr/local/kalprod/flash/kdp3/v3.8" skipFilesOwner="true" skipFilesMode="true" />
-				<v3.8.5 svnPath="/usr/local/kalprod/flash/kdp3/v3.8.9" skipFilesOwner="true" skipFilesMode="true" />
-				<v3.8.9 svnPath="/usr/local/kalprod/flash/kdp3/v3.8.9" skipFilesOwner="true" skipFilesMode="true" />
-				<v3.9.1 svnPath="/usr/local/kalprod/flash/kdp3/v3.9.1" skipFilesOwner="true" skipFilesMode="true" />
-				<v3.9.2 svnPath="/usr/local/kalprod/flash/kdp3/v3.9.2" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.9.7 gitPath="/kaltura/kdp" release="v3.9.7" skipFilesOwner="true" skipFilesMode="true" />
 			</kdp3>
 			<kdp3plugins  svnPath="/usr/local/kalprod/flash/kdp3plugins" skipFilesOwner="true" skipFilesMode="true" />
 			<kdp3wrapper skipFilesOwner="true" skipFilesMode="true">
@@ -65,7 +62,7 @@
 				<v1.1.2 svnPath="/usr/local/kalprod/flash/kclip/v1.1.2" skipFilesOwner="true" skipFilesMode="true" />
 			</kclip>
 			<kmc skipFilesOwner="true" skipFilesMode="true">
-				<v5.36.10 svnPath="/usr/local/kalprod/flash/kmc/v5.36.10" skipFilesOwner="true" skipFilesMode="true" />
+				<v5.37.9 svnPath="/usr/local/kalprod/flash/kmc/v5.37.9" skipFilesOwner="true" skipFilesMode="true" />
 				<login skipFilesOwner="true" skipFilesMode="true">
 					<v1.2.3 svnPath="/usr/local/kalprod/flash/kmc/login/v1.2.3" skipFilesOwner="true" skipFilesMode="true" />
 				</login>
@@ -288,16 +285,7 @@
 		</dropfolders>
 		<html5 skipFilesOwner="true" skipFilesMode="true">
 			<html5lib>
-				<v1.6.12.27g	gitPath="/kaltura/mwEmbed.git" gitBranch="v1.6.12.27g"	skipFilesOwner="true" skipFilesMode="true" />
-				<v1.7.0.4		gitPath="/kaltura/mwEmbed.git" gitBranch="v1.7.0.4"	skipFilesOwner="true" skipFilesMode="true" />
-				<v1.7.2			gitPath="/kaltura/mwEmbed.git" gitBranch="v1.7.2"	skipFilesOwner="true" skipFilesMode="true" />
-				<v1.7.0.8		gitPath="/kaltura/mwEmbed.git" gitBranch="v1.7.0.8"	skipFilesOwner="true" skipFilesMode="true" />
-				<v1.7.1.11		gitPath="/kaltura/mwEmbed.git" gitBranch="v1.7.1.11"	skipFilesOwner="true" skipFilesMode="true" />
-				<v1.8.2			gitPath="/kaltura/mwEmbed.git" gitBranch="v1.8.2"		skipFilesOwner="true" skipFilesMode="true" />
-				<v1.8.5			gitPath="/kaltura/mwEmbed.git" gitBranch="v1.8.5"		skipFilesOwner="true" skipFilesMode="true" />
-				<v1.8.9			gitPath="/kaltura/mwEmbed.git" gitBranch="v1.8.9"		skipFilesOwner="true" skipFilesMode="true" />
-				<v1.9.3			gitPath="/kaltura/mwEmbed.git" gitBranch="v1.9.3"		skipFilesOwner="true" skipFilesMode="true" />
-				<v1.9.4			gitPath="/kaltura/mwEmbed.git" gitBranch="v1.9.4"		skipFilesOwner="true" skipFilesMode="true" />
+				<v2.2.1 gitPath="/kaltura/mwEmbed" archive="v2.2.1" skipFilesOwner="true" skipFilesMode="true" />
 			</html5lib>
 		</html5>
 		<log user="${OS_KALTURA_USER}" mode="0750" />

@@ -73,11 +73,17 @@ class Installer
 		foreach($this->components as $component)
 		{
 			if(isset($this->installConfig[$component]) && isset($this->installConfig[$component]['users']))
-				$users = array_merge($users, $this->installConfig[$component]['users']);
+			{
+				$tmpUsers = array_merge($users, $this->installConfig[$component]['users']);
+				foreach ( $tmpUsers as $user )
+				{
+					$users[] = AppConfig::replaceTokensInString( $user );
+				}
+			}
 		}
 		$users = implode(',', array_unique($users));
 				
-		Logger::logMessage(Logger::LEVEL_USER, "Creating operating system users");
+		Logger::logMessage(Logger::LEVEL_USER, "Creating operating system users: " . $users);
 		$dir = __DIR__ . '/../osUsers';
 		return OsUtils::phing($dir, 'Create-Users', array('users' => $users));
 	}
@@ -884,7 +890,7 @@ class Installer
 			foreach($this->installConfig[Installer::BASE_COMPONENT]['uiconfs_2'] as $uiconfapp)
 			{
 				$to_deploy = AppConfig::replaceTokensInString($uiconfapp);
-				if(OsUtils::execute(sprintf("%s %s/deployment/uiconf/deploy_v2.php --ini=%s", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), $to_deploy)))
+				if(OsUtils::execute(sprintf("%s %s/deployment/uiconf/deploy_v2.php --ini=%s --user=%s --group=%s", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), $to_deploy, AppConfig::get(AppConfigAttribute::OS_APACHE_USER), AppConfig::get(AppConfigAttribute::OS_KALTURA_GROUP))))
 				{
 					Logger::logMessage(Logger::LEVEL_INFO, "Deployed user interface configuration files $to_deploy");
 				}

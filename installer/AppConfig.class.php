@@ -17,6 +17,7 @@ class AppConfigAttribute
 	const ETL_HOME_DIR = 'ETL_HOME_DIR';
 
 	const PHP_BIN = 'PHP_BIN';
+	const PHP_CONF_DIR = 'PHP_CONF_DIR';
 	const PEAR_BIN = 'PEAR_BIN';
 	const HTTPD_BIN = 'HTTPD_BIN';
 	const LOG_ROTATE_BIN = 'LOG_ROTATE_BIN';
@@ -26,6 +27,7 @@ class AppConfigAttribute
 	const SPHINX_BIN_DIR = 'SPHINX_BIN_DIR';
 
 	const OS_TYPE = 'OS_TYPE';
+	const OS_DISTRO = 'OS_DISTRO';
 	
 	const OS_ROOT_USER = 'OS_ROOT_USER';
 	const OS_APACHE_USER = 'OS_APACHE_USER';
@@ -103,6 +105,8 @@ class AppConfigAttribute
 	const TEMPLATE_PARTNER_ADMIN_SECRET = 'TEMPLATE_PARTNER_ADMIN_SECRET';
 	const MONITOR_PARTNER_SECRET = 'MONITOR_PARTNER_SECRET';
 	const MONITOR_PARTNER_ADMIN_SECRET = 'MONITOR_PARTNER_ADMIN_SECRET';
+	const MEDIA_PARTNER_ADMIN_SECRET = 'MEDIA_PARTNER_ADMIN_SECRET';
+	const PLAY_PARTNER_ADMIN_SECRET = 'PLAY_PARTNER_ADMIN_SECRET';
 
 	const PARTNERS_USAGE_REPORT_SEND_FROM = 'PARTNERS_USAGE_REPORT_SEND_FROM';
 	const PARTNERS_USAGE_REPORT_SEND_TO = 'PARTNERS_USAGE_REPORT_SEND_TO';
@@ -265,6 +269,18 @@ class AppConfig
 		}
 		
 		self::initField(AppConfigAttribute::OS_TYPE, OsUtils::getOsName());
+		$distroName = OsUtils::getOsDistroName();
+		self::initField(AppConfigAttribute::OS_DISTRO, $distroName);
+		
+		// Override apache values in Ubuntu/Debian distros
+		if ( OsUtils::isDebianDistro() )
+		{
+			// Set the apache user to www-data
+			self::initField(AppConfigAttribute::APACHE_SERVICE, 'apache2');
+			self::initField(AppConfigAttribute::OS_APACHE_USER, 'www-data');
+			self::initField(AppConfigAttribute::OS_APACHE_UID, 33);
+			self::initField(AppConfigAttribute::PHP_CONF_DIR, '/etc/php5/conf.d');
+		}		
 	}
 
 	public static function validateActivationKey($key)
@@ -472,6 +488,7 @@ class AppConfig
 		self::initField(AppConfigAttribute::DWH_DIR, self::get(AppConfigAttribute::BASE_DIR) . '/dwh');
 		self::initField(AppConfigAttribute::ETL_HOME_DIR, self::get(AppConfigAttribute::BASE_DIR) . '/dwh'); // For backward compatibility
 		self::initField(AppConfigAttribute::SPHINX_BIN_DIR, self::get(AppConfigAttribute::BIN_DIR) . '/sphinx');
+		self::initField(AppConfigAttribute::PHP_CONF_DIR, '/etc/php.d');
 
 		self::initField(AppConfigAttribute::IMAGE_MAGICK_BIN_DIR, "/usr/bin");
 		self::initField(AppConfigAttribute::CURL_BIN_DIR, "/usr/bin");
@@ -623,6 +640,8 @@ class AppConfig
 			self::initField(AppConfigAttribute::TEMPLATE_PARTNER_ADMIN_SECRET, self::generateSecret());
 			self::initField(AppConfigAttribute::MONITOR_PARTNER_SECRET, self::generateSecret());
 			self::initField(AppConfigAttribute::MONITOR_PARTNER_ADMIN_SECRET, self::generateSecret());
+			self::initField(AppConfigAttribute::MEDIA_PARTNER_ADMIN_SECRET, self::generateSecret());
+			self::initField(AppConfigAttribute::PLAY_PARTNER_ADMIN_SECRET, self::generateSecret());
 		}
 		else
 		{
@@ -667,6 +686,18 @@ class AppConfig
 				self::initField(AppConfigAttribute::MONITOR_PARTNER_SECRET, $output[0]);
 			else
 				self::initField(AppConfigAttribute::MONITOR_PARTNER_SECRET, self::generateSecret());
+			
+			$output = OsUtils::executeWithOutput('echo "select admin_secret from partner where id=-5" | ' . self::get(AppConfigAttribute::MYSQL_BIN) . ' -h' . self::get(AppConfigAttribute::DB1_HOST) . ' -P' . self::get(AppConfigAttribute::DB1_PORT) . ' -u' . self::get(AppConfigAttribute::DB1_USER) . ' -p' . self::get(AppConfigAttribute::DB1_PASS) . ' ' . self::get(AppConfigAttribute::DB1_NAME) . ' --skip-column-names');
+			if(count($output) && $output[0])
+				self::initField(AppConfigAttribute::MEDIA_PARTNER_ADMIN_SECRET, $output[0]);
+			else
+				self::initField(AppConfigAttribute::MEDIA_PARTNER_ADMIN_SECRET, self::generateSecret());
+			
+			$output = OsUtils::executeWithOutput('echo "select admin_secret from partner where id=-6" | ' . self::get(AppConfigAttribute::MYSQL_BIN) . ' -h' . self::get(AppConfigAttribute::DB1_HOST) . ' -P' . self::get(AppConfigAttribute::DB1_PORT) . ' -u' . self::get(AppConfigAttribute::DB1_USER) . ' -p' . self::get(AppConfigAttribute::DB1_PASS) . ' ' . self::get(AppConfigAttribute::DB1_NAME) . ' --skip-column-names');
+			if(count($output) && $output[0])
+				self::initField(AppConfigAttribute::PLAY_PARTNER_ADMIN_SECRET, $output[0]);
+			else
+				self::initField(AppConfigAttribute::PLAY_PARTNER_ADMIN_SECRET, self::generateSecret());
 		}
 
 		self::initField(AppConfigAttribute::VERIFY_INSTALLATION, true);

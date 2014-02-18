@@ -10,6 +10,7 @@ class OsUtils {
 	const LINUX_OS   = 'linux';
 
 	private static $log = null;
+	private static $isDebianDistro = null; // null while not determined, and then true/false
 
 	public static function setLogPath($path)
 	{
@@ -108,6 +109,56 @@ class OsUtils {
 		return $dist;
 	}
 
+	/**
+	 * Get the linux raw distro name, or and empty string if not available.
+	 * @return string|""
+	 */
+	public static function getOsDistroName() {
+		if(!self::isLinux())
+			return null;
+	
+		$distroName = "";
+		$result = OsUtils::executeWithOutput("lsb_release -i"); // Expected output: "Distributor ID:\tDistributorID"
+		if ( $result )
+		{
+			$components = preg_split("|\t|", $result[0]);
+			$distroName = $components[1];
+		}
+	
+		Logger::logMessage(Logger::LEVEL_INFO, "OS Distro Name: " . $distroName);
+		return $distroName;
+	}
+
+	/**
+	 * Determine if the OS is a Linux distro of either Debian or Ubuntu
+	 * @return boolean
+	 */
+	public static function isDebianDistro()
+	{
+		if ( self::$isDebianDistro === null ) // Not yet determined?
+		{
+			if ( ! self::isLinux() )
+			{
+				self::$isDebianDistro = false;
+			}
+			else
+			{	
+				$result = OsUtils::executeWithOutput( 'if lsb_release -i | grep -iq "Ubuntu\|Debian"; then echo "deb"; fi' );
+
+				if ( count($result) > 0 && $result[0] === "deb" )
+				{ 
+					self::$isDebianDistro = true;
+				}
+				else
+				{ 
+					self::$isDebianDistro = false;
+				}
+			}
+		}
+				
+		return self::$isDebianDistro;
+	}
+	
 	// returns '32bit'/'64bit' according to current system architecture - if not found, default is 32bit
 	public static function getSystemArchitecture() {
 		$arch = php_uname('m');
@@ -240,7 +291,16 @@ class OsUtils {
 		}
 			
 		if($alwaysStartAutomtically)
-			OsUtils::execute("chkconfig $service on");
+		{
+			if ( OsUtils::isDebianDistro() )
+			{
+				OsUtils::execute("update-rc.d $service defaults");
+			}
+			else
+			{
+				OsUtils::execute("chkconfig $service on");
+			}
+		}
 
 		return OsUtils::execute("/etc/init.d/$service restart");
 	}
@@ -375,8 +435,13 @@ class OsUtils {
 
 		foreach ($serviceName as $service)
 		{
-			$output = OsUtils::executeWithOutput("service --status-all 2>&1 | grep -c httpd");
-			$count = trim(reset($output));
+			$output = OsUtils::executeWithOutput("service --status-all 2>&1 | grep -c $service");
+			if ( is_array($output) )
+			{
+				$output = reset( $output );
+			}
+			
+			$count = trim($output);
 			if(is_numeric($count) && intval($count) > 0)
 			{
 				Logger::logMessage(Logger::LEVEL_INFO, "Service $service found");

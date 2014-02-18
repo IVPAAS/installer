@@ -174,29 +174,46 @@
 					<then>
 						<ProgressBarTitle name="directories" title="Checkout git - ${directory.path}" />
 						<if>
-							<available file="${directory.fullPath}/.git" type="dir" />
+							<and>
+								<available file="${directory.fullPath}/.git" type="dir" />
+								<isset property="directory.attributes.${directory.id}.gitBranch" />
+							</and>
 							<then>
 								<echo message="Pull git repository [${directory.fullPath}]" />
-								<if>
-									<isset property="directory.attributes.${directory.id}.gitBranch" />
-									<then>
-										<gitpull gitPath="${git.bin}" repository="${directory.fullPath}" strategy="recursive" source="." refspec="${directory.attributes.${directory.id}.gitBranch}" />
-									</then>
-									<else>
-										<gitpull gitPath="${git.bin}" repository="${directory.fullPath}" strategy="recursive" all="true" />
-									</else>
-								</if>
+								<gitcheckout gitPath="${git.bin}" repository="${directory.fullPath}" force="true" branchname="${directory.attributes.${directory.id}.gitBranch}" />
+								<gitpull gitPath="${git.bin}" repository="${directory.fullPath}" strategy="theirs" source="origin" refspec="${directory.attributes.${directory.id}.gitBranch}" tags="true" force="true" />
 							</then>
 							<else>
-								<property name="directory.gitUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}" />
-								<echo message="Clone from git URL [${directory.gitUrl}]" />
-								<gitclone gitPath="${git.bin}" repository="${directory.gitUrl}" targetPath="${directory.fullPath}" />
-								<gitfetch gitPath="${git.bin}" source="${directory.gitUrl}" repository="${directory.fullPath}" all="true" />
 								<if>
-									<isset property="directory.attributes.${directory.id}.gitBranch" />
+									<or>
+										<isset property="directory.attributes.${directory.id}.release" />
+										<isset property="directory.attributes.${directory.id}.archive" />
+									</or>
 									<then>
-										<gitcheckout gitPath="${git.bin}" repository="${directory.fullPath}" branchname="${directory.attributes.${directory.id}.gitBranch}" />
+										<if>
+											<isset property="directory.attributes.${directory.id}.release" />
+											<then>
+												<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/releases/download/${directory.attributes.${directory.id}.release}/${directory.attributes.${directory.id}.release}.zip" />
+											</then>
+											<else>
+												<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/archive/${directory.attributes.${directory.id}.archive}.zip" />
+											</else>
+										</if>
+										
+										<httpget url="${directory.releaseUrl}" dir="${directory.fullPath}/../" filename="{directory.attributes.${directory.id}.release}.zip" followRedirects="true" sslVerifyPeer="false" />
+										<unzip file="${directory.fullPath}/../{directory.attributes.${directory.id}.release}.zip" todir="${directory.fullPath}" forceExtract="true" />
 									</then>
+									<else>
+										<property name="directory.gitUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}" />
+										<echo message="Clone from git URL [${directory.gitUrl}]" />
+										<gitclone gitPath="${git.bin}" repository="${directory.gitUrl}" targetPath="${directory.fullPath}" />
+										<if>
+											<isset property="directory.attributes.${directory.id}.gitBranch" />
+											<then>
+												<gitcheckout gitPath="${git.bin}" repository="${directory.fullPath}" force="true" branchname="${directory.attributes.${directory.id}.gitBranch}" />
+											</then>
+										</if>
+									</else>
 								</if>
 							</else>
 						</if>
