@@ -38,7 +38,6 @@
 				<v1.0 svnPath="/usr/local/kalprod/flash/cvfsdk/v1.0" skipFilesOwner="true" skipFilesMode="true" />
 			</cvfsdk>
 			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.9.6 gitPath="/kaltura/kdp" release="v3.9.6" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.9.7 gitPath="/kaltura/kdp" release="v3.9.7" skipFilesOwner="true" skipFilesMode="true" />
 			</kdp3>
 			<kdp3plugins  svnPath="/usr/local/kalprod/flash/kdp3plugins" skipFilesOwner="true" skipFilesMode="true" />
