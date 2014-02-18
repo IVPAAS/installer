@@ -193,10 +193,10 @@
 										<if>
 											<isset property="directory.attributes.${directory.id}.release" />
 											<then>
-												<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/releases/download/{directory.attributes.${directory.id}.release}/{directory.attributes.${directory.id}.release}.zip" />
+												<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/releases/download/${directory.attributes.${directory.id}.release}/${directory.attributes.${directory.id}.release}.zip" />
 											</then>
 											<else>
-												<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/archive/{directory.attributes.${directory.id}.archive}.zip" />
+												<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/archive/${directory.attributes.${directory.id}.archive}.zip" />
 											</else>
 										</if>
 										
