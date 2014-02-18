@@ -143,6 +143,8 @@ class AppConfigAttribute
 	const APACHE_BINARY = 'APACHE_BINARY';
 	const ENVIRONMENT_PROTOCOL = 'ENVIRONMENT_PROTOCOL';
 	const INSTALLED_HOSTNAME = 'INSTALLED_HOSTNAME';
+	const PRIMARY_MEDIA_SERVER_HOST = 'PRIMARY_MEDIA_SERVER_HOST';
+	const SECONDARY_MEDIA_SERVER_HOST = 'SECONDARY_MEDIA_SERVER_HOST';
 
 	const CONTACT_URL = 'CONTACT_URL';
 	const SIGNUP_URL = 'SIGNUP_URL';
@@ -503,6 +505,8 @@ class AppConfig
 		self::initField(AppConfigAttribute::MEMCACHE_HOST, self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME));
 		self::initField(AppConfigAttribute::GLOBAL_MEMCACHE_HOST, self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME));
 		self::initField(AppConfigAttribute::WWW_HOST, self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
+		self::initField(AppConfigAttribute::PRIMARY_MEDIA_SERVER_HOST, self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
+		self::initField(AppConfigAttribute::SECONDARY_MEDIA_SERVER_HOST, '');
 		self::initField(AppConfigAttribute::SERVICE_URL, self::get(AppConfigAttribute::ENVIRONMENT_PROTOCOL) . '://' . self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
 
 		// admin console defaults
