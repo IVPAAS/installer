@@ -62,7 +62,7 @@
 				<v1.1.2 svnPath="/usr/local/kalprod/flash/kclip/v1.1.2" skipFilesOwner="true" skipFilesMode="true" />
 			</kclip>
 			<kmc skipFilesOwner="true" skipFilesMode="true">
-				<v5.37.9 svnPath="/usr/local/kalprod/flash/kmc/v5.37.9" skipFilesOwner="true" skipFilesMode="true" />
+				<v5.37.11 svnPath="/usr/local/kalprod/flash/kmc/v5.37.11" skipFilesOwner="true" skipFilesMode="true" />
 				<login skipFilesOwner="true" skipFilesMode="true">
 					<v1.2.3 svnPath="/usr/local/kalprod/flash/kmc/login/v1.2.3" skipFilesOwner="true" skipFilesMode="true" />
 				</login>
@@ -231,6 +231,7 @@
 		<content mode="0750" skipFilesMode="true" skipFilesOwner="true">
 			<uploads mode="0700" skipFilesMode="true" skipFilesOwner="true" />
 			<webcam mode="0700" skipFilesMode="true" skipFilesOwner="true" />
+			<recorded mode="0700" skipFilesMode="true" skipFilesOwner="true" />
 			<cacheswf mode="0700" skipFilesMode="true" skipFilesOwner="true" />
 			<generatedUiConf mode="0770" skipFilesMode="true" skipFilesOwner="true" />
 			<reports mode="0700" skipFilesMode="true" skipFilesOwner="true" />
