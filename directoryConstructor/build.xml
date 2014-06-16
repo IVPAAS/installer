@@ -201,7 +201,7 @@
 										</if>
 										
 										<httpget url="${directory.releaseUrl}" dir="${directory.fullPath}/../" filename="${directory.attributes.${directory.id}.release}.zip" followRedirects="true" sslVerifyPeer="false" />
-										<unzip file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip" todir="${directory.fullPath}" forceExtract="true" />
+										<unzip file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip" todir="${directory.fullPath}/../" forceExtract="true" />
 									</then>
 									<else>
 										<property name="directory.gitUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}" />
