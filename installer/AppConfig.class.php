@@ -1318,8 +1318,8 @@ class AppConfig
 	private static function generatePassword()
 	{
 		Logger::logMessage(Logger::LEVEL_INFO, "Generating passwrod");
-		$secret = md5(self::makeRandomString(8, 14, true, true, true));
-		return $secret;
+		$password = self::makeRandomString(8, 14, true, true, true);
+		return $password;
 	}
 
 	// checks if the given file is a template file and if so copies it to a non template file
