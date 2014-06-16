@@ -37,11 +37,10 @@
 			<cvfsdk skipFilesOwner="true" skipFilesMode="true">
 				<v1.0 svnPath="/usr/local/kalprod/flash/cvfsdk/v1.0" skipFilesOwner="true" skipFilesMode="true" />
 			</cvfsdk>
-			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.9.7 gitPath="/kaltura/kdp" release="v3.9.7" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3>
 			<kdp3plugins  svnPath="/usr/local/kalprod/flash/kdp3plugins" skipFilesOwner="true" skipFilesMode="true" />
 			<kdp3wrapper skipFilesOwner="true" skipFilesMode="true">
+				<v32.0 svnPath="/usr/local/kalprod/flash/kdp3wrapper/v32.0" skipFilesOwner="true" skipFilesMode="true" />
+				<v33.0 svnPath="/usr/local/kalprod/flash/kdp3wrapper/v33.0" skipFilesOwner="true" skipFilesMode="true" />
 				<v34.0 svnPath="/usr/local/kalprod/flash/kdp3wrapper/v34.0" skipFilesOwner="true" skipFilesMode="true" />
 			</kdp3wrapper>
 			<flexwrapper skipFilesOwner="true" skipFilesMode="true">
@@ -70,11 +69,24 @@
 			
 			<!-- MediaSpace4 -->
 			<kdp3 skipFilesOwner="true" skipFilesMode="true">
+				<v3.5.14 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.14" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.5.33 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.33" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.1.6 svnPath="/usr/local/kalprod/flash/kdp3/v3.1.6" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.5.45 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.45" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.5.50 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.50" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.5.6 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.6" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.5.7.6 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.7.6" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.5.7.7 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.7.7" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.5.9 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.9" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.6.5 svnPath="/usr/local/kalprod/flash/kdp3/v3.6.5" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.6.9 svnPath="/usr/local/kalprod/flash/kdp3/v3.6.9" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.6.11 svnPath="/usr/local/kalprod/flash/kdp3/v3.6.11" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.6.17 svnPath="/usr/local/kalprod/flash/kdp3/v3.6.17" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.4.10.1 svnPath="/usr/local/kalprod/flash/kdp3/v3.4.10.1" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.4.5 svnPath="/usr/local/kalprod/flash/kdp3/v3.4.5" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.3.9.2 svnPath="/usr/local/kalprod/flash/kdp3/v3.3.9.2" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.9.7 gitPath="/kaltura/kdp" release="v3.9.7" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.9.9 gitPath="/kaltura/kdp" release="v3.9.9" skipFilesOwner="true" skipFilesMode="true" />
 			</kdp3>
 			<kupload skipFilesOwner="true" skipFilesMode="true">
 				<v1.2.8 svnPath="/usr/local/kalprod/flash/kupload/v1.2.8" skipFilesOwner="true" skipFilesMode="true" />
@@ -88,9 +100,6 @@
 				<v1.2.3 svnPath="/usr/local/kalprod/flash/kae/v1.2.3" skipFilesOwner="true" skipFilesMode="true" />
 			</kae>
 			<mixplugins svnPath="/usr/local/kalprod/flash/mixplugins" skipFilesOwner="true" skipFilesMode="true" />
-			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.5.6 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.6" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3>
 
 			<!-- Sakai (Falcon) -->
 			<kclip skipFilesOwner="true" skipFilesMode="true">
@@ -98,10 +107,6 @@
 			</kclip>
 
 			<!-- Moodle (Eagle) -->
-			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.5.7.6 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.7.6" skipFilesOwner="true" skipFilesMode="true" />
-				<v3.5.7.7 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.7.7" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3>
 			<kcw skipFilesOwner="true" skipFilesMode="true">
 				<v2.1.6.7 svnPath="/usr/local/kalprod/flash/kcw/v2.1.6.7" skipFilesOwner="true" skipFilesMode="true" />
 			</kcw>
@@ -109,20 +114,11 @@
 				<v1.2.8 svnPath="/usr/local/kalprod/flash/kupload/v1.2.8" skipFilesOwner="true" skipFilesMode="true" />
 			</kupload>
 
-			<!-- MS3 -->
-			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.5.45 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.45" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3>
 			<krecord skipFilesOwner="true" skipFilesMode="true">
 				<v1.5.2  svnPath="/usr/local/kalprod/flash/krecord/v1.5.2" skipFilesOwner="true" skipFilesMode="true" />
 				<v1.6.2  svnPath="/usr/local/kalprod/flash/krecord/v1.6.2" skipFilesOwner="true" skipFilesMode="true" />
 			</krecord>
 
-			<!-- Sharepoint -->
-			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.5.50 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.50" skipFilesOwner="true" skipFilesMode="true" />
-				<v3.5.7.6 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.7.6" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3>
 			<kcw skipFilesOwner="true" skipFilesMode="true">
 				<v2.1.6.7 svnPath="/usr/local/kalprod/flash/kcw/v2.1.6.7" skipFilesOwner="true" skipFilesMode="true" />
 			</kcw>
@@ -143,14 +139,6 @@
 				<v1.5.4 svnPath="/usr/local/kalprod/flash/kcw/v1.5.4" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.1.6.7 svnPath="/usr/local/kalprod/flash/kcw/v2.1.6.7" skipFilesOwner="true" skipFilesMode="true" />
 			</kcw>
-			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.1.6 svnPath="/usr/local/kalprod/flash/kdp3/v3.1.6" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3>
-
-			<!-- BB -->
-			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.5.33 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.33" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3>
 			<kclip skipFilesOwner="true" skipFilesMode="true">
 				<v1.1.4 svnPath="/usr/local/kalprod/flash/kclip/v1.1.4" skipFilesOwner="true" skipFilesMode="true" />
 			</kclip>
@@ -159,14 +147,6 @@
 			<kse skipFilesOwner="true" skipFilesMode="true">
 				<v2.1.3CE svnPath="/usr/local/kalprod/flash/kse/v2.1.3CE" skipFilesOwner="true" skipFilesMode="true" />
 			</kse>
-
-			<!-- Legacy Dragonfly -->
-			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.5.14 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.14" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3>
-			<kdp3wrapper skipFilesOwner="true" skipFilesMode="true">
-				<v33.0 svnPath="/usr/local/kalprod/flash/kdp3wrapper/v33.0" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3wrapper>
 			<flexwrapper skipFilesOwner="true" skipFilesMode="true">
 				<v1.3 svnPath="/usr/local/kalprod/flash/flexwrapper/v1.3" skipFilesOwner="true" skipFilesMode="true" />
 			</flexwrapper>
@@ -196,14 +176,6 @@
 				<v2.0.12 svnPath="/usr/local/kalprod/flash/kdp/v2.0.12" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.7.0 svnPath="/usr/local/kalprod/flash/kdp/v2.7.0" skipFilesOwner="true" skipFilesMode="true" />
 			</kdp>
-			<kdp3 skipFilesOwner="true" skipFilesMode="true">
-				<v3.4.10.1 svnPath="/usr/local/kalprod/flash/kdp3/v3.4.10.1" skipFilesOwner="true" skipFilesMode="true" />
-				<v3.4.5 svnPath="/usr/local/kalprod/flash/kdp3/v3.4.5" skipFilesOwner="true" skipFilesMode="true" />
-				<v3.3.9.2 svnPath="/usr/local/kalprod/flash/kdp3/v3.3.9.2" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3>
-			<kdp3wrapper skipFilesOwner="true" skipFilesMode="true">
-				<v32.0 svnPath="/usr/local/kalprod/flash/kdp3wrapper/v32.0" skipFilesOwner="true" skipFilesMode="true" />
-			</kdp3wrapper>
 			<kdpwrapper skipFilesOwner="true" skipFilesMode="true">
 				<v11.0 svnPath="/usr/local/kalprod/flash/kdpwrapper/v11.0" skipFilesOwner="true" skipFilesMode="true" />
 			</kdpwrapper>

@@ -107,6 +107,16 @@ class AppConfigAttribute
 	const MONITOR_PARTNER_ADMIN_SECRET = 'MONITOR_PARTNER_ADMIN_SECRET';
 	const MEDIA_PARTNER_ADMIN_SECRET = 'MEDIA_PARTNER_ADMIN_SECRET';
 	const PLAY_PARTNER_ADMIN_SECRET = 'PLAY_PARTNER_ADMIN_SECRET';
+	
+	const BATCH_PARTNER_ADMIN_PASSWORD = 'BATCH_PARTNER_ADMIN_PASSWORD';
+	const PARTNER_ZERO_ADMIN_PASSWORD = 'PARTNER_ZERO_ADMIN_PASSWORD';
+	const ADMIN_CONSOLE_PARTNER_ADMIN_PASSWORD = 'ADMIN_CONSOLE_PARTNER_ADMIN_PASSWORD';
+	const HOSTED_PAGES_PARTNER_ADMIN_PASSWORD = 'HOSTED_PAGES_PARTNER_ADMIN_PASSWORD';
+	const TEMPLATE_PARTNER_ADMIN_PASSWORD = 'TEMPLATE_PARTNER_ADMIN_PASSWORD';
+	const MONITOR_PARTNER_PASSWORD = 'MONITOR_PARTNER_PASSWORD';
+	const MONITOR_PARTNER_ADMIN_PASSWORD = 'MONITOR_PARTNER_ADMIN_PASSWORD';
+	const MEDIA_PARTNER_ADMIN_PASSWORD = 'MEDIA_PARTNER_ADMIN_PASSWORD';
+	const PLAY_PARTNER_ADMIN_PASSWORD = 'PLAY_PARTNER_ADMIN_PASSWORD';
 
 	const PARTNERS_USAGE_REPORT_SEND_FROM = 'PARTNERS_USAGE_REPORT_SEND_FROM';
 	const PARTNERS_USAGE_REPORT_SEND_TO = 'PARTNERS_USAGE_REPORT_SEND_TO';
@@ -635,6 +645,15 @@ class AppConfig
 		self::initField(AppConfigAttribute::SPHINX_DB_HOST, self::get(AppConfigAttribute::DB1_HOST));
 		self::initField(AppConfigAttribute::SPHINX_DB_PORT, self::get(AppConfigAttribute::DB1_PORT));
 
+		//admin passwords
+		self::initField(AppConfigAttribute::PARTNER_ZERO_ADMIN_PASSWORD, self::generatePassword());
+		self::initField(AppConfigAttribute::BATCH_PARTNER_ADMIN_PASSWORD, self::generatePassword());
+		self::initField(AppConfigAttribute::HOSTED_PAGES_PARTNER_ADMIN_PASSWORD, self::generatePassword());
+		self::initField(AppConfigAttribute::TEMPLATE_PARTNER_ADMIN_PASSWORD, self::generatePassword());
+		self::initField(AppConfigAttribute::MONITOR_PARTNER_ADMIN_SECRET, self::generatePassword());
+		self::initField(AppConfigAttribute::MEDIA_PARTNER_ADMIN_PASSWORD, self::generatePassword());
+		self::initField(AppConfigAttribute::PLAY_PARTNER_ADMIN_PASSWORD, self::generatePassword());
+		
 		if(self::get(AppConfigAttribute::DB1_CREATE_NEW_DB))
 		{
 			self::initField(AppConfigAttribute::PARTNER_ZERO_ADMIN_SECRET, self::generateSecret());
@@ -1289,6 +1308,17 @@ class AppConfig
 	{
 		Logger::logMessage(Logger::LEVEL_INFO, "Generating secret");
 		$secret = md5(self::makeRandomString(5, 10, true, false, true));
+		return $secret;
+	}
+	
+	/**
+	 * Generates a password and returns it
+	 * @return string
+	 */
+	private static function generatePassword()
+	{
+		Logger::logMessage(Logger::LEVEL_INFO, "Generating passwrod");
+		$secret = md5(self::makeRandomString(8, 14, true, true, true));
 		return $secret;
 	}
 
