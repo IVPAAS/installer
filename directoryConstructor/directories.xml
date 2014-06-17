@@ -63,7 +63,7 @@
 			<kmc skipFilesOwner="true" skipFilesMode="true">
 				<v5.37.21 gitPath="/kaltura/kmc" release="v5.37.21" skipFilesOwner="true" skipFilesMode="true" />
 				<login skipFilesOwner="true" skipFilesMode="true">
-					<v1.2.3 svnPath="/usr/local/kalprod/flash/kmc/login/v1.2.3" skipFilesOwner="true" skipFilesMode="true" />
+					<v1.2.4 gitPath="/kaltura/kmc-login" release="v1.2.4" skipFilesOwner="true" skipFilesMode="true" />
 				</login>
 			</kmc>
 			
