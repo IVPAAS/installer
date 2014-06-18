@@ -113,7 +113,6 @@ class AppConfigAttribute
 	const ADMIN_CONSOLE_PARTNER_ADMIN_PASSWORD = 'ADMIN_CONSOLE_PARTNER_ADMIN_PASSWORD';
 	const HOSTED_PAGES_PARTNER_ADMIN_PASSWORD = 'HOSTED_PAGES_PARTNER_ADMIN_PASSWORD';
 	const TEMPLATE_PARTNER_ADMIN_PASSWORD = 'TEMPLATE_PARTNER_ADMIN_PASSWORD';
-	const MONITOR_PARTNER_PASSWORD = 'MONITOR_PARTNER_PASSWORD';
 	const MONITOR_PARTNER_ADMIN_PASSWORD = 'MONITOR_PARTNER_ADMIN_PASSWORD';
 	const MEDIA_PARTNER_ADMIN_PASSWORD = 'MEDIA_PARTNER_ADMIN_PASSWORD';
 	const PLAY_PARTNER_ADMIN_PASSWORD = 'PLAY_PARTNER_ADMIN_PASSWORD';
@@ -650,7 +649,7 @@ class AppConfig
 		self::initField(AppConfigAttribute::BATCH_PARTNER_ADMIN_PASSWORD, self::generatePassword());
 		self::initField(AppConfigAttribute::HOSTED_PAGES_PARTNER_ADMIN_PASSWORD, self::generatePassword());
 		self::initField(AppConfigAttribute::TEMPLATE_PARTNER_ADMIN_PASSWORD, self::generatePassword());
-		self::initField(AppConfigAttribute::MONITOR_PARTNER_ADMIN_SECRET, self::generatePassword());
+		self::initField(AppConfigAttribute::MONITOR_PARTNER_ADMIN_PASSWORD, self::generatePassword());
 		self::initField(AppConfigAttribute::MEDIA_PARTNER_ADMIN_PASSWORD, self::generatePassword());
 		self::initField(AppConfigAttribute::PLAY_PARTNER_ADMIN_PASSWORD, self::generatePassword());
 		
