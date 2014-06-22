@@ -194,14 +194,23 @@
 											<isset property="directory.attributes.${directory.id}.release" />
 											<then>
 												<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/releases/download/${directory.attributes.${directory.id}.release}/${directory.attributes.${directory.id}.release}.zip" />
+												<httpget url="${directory.releaseUrl}" dir="${directory.fullPath}/../" filename="${directory.attributes.${directory.id}.release}.zip" followRedirects="true" sslVerifyPeer="false" />
+												<unzip file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip" todir="${directory.fullPath}/../" forceExtract="true" />
+												<delete file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip"/>
 											</then>
 											<else>
 												<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/archive/${directory.attributes.${directory.id}.archive}.zip" />
+												<httpget url="${directory.releaseUrl}" dir="${directory.fullPath}/../" filename="${directory.attributes.${directory.id}.archive}.zip" followRedirects="true" sslVerifyPeer="false" />
+												<unzip file="${directory.fullPath}/../${directory.attributes.${directory.id}.archive}.zip" todir="${directory.fullPath}/../" forceExtract="true" />
+												<copy todir="${directory.fullPath}/../${directory.attributes.${directory.id}.archive}">
+													<fileset dir="${directory.fullPath}/../${directory.attributes.${directory.id}.projectName}-${directory.attributes.${directory.id}.version}">
+														<include name="**"></include>
+													</fileset>
+												</copy>
+												<delete file="${directory.fullPath}/../${directory.attributes.${directory.id}.archive}.zip"/>
 											</else>
 										</if>
 										
-										<httpget url="${directory.releaseUrl}" dir="${directory.fullPath}/../" filename="${directory.attributes.${directory.id}.release}.zip" followRedirects="true" sslVerifyPeer="false" />
-										<unzip file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip" todir="${directory.fullPath}/../" forceExtract="true" />
 									</then>
 									<else>
 										<property name="directory.gitUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}" />
