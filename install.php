@@ -234,14 +234,8 @@ if ($install_output !== null)
 		$installer->detectLeftovers(false);
 	}
 
-	if (AppConfig::get(AppConfigAttribute::KALTURA_VERSION_TYPE) == AppConfig::K_CE_TYPE)
-	{
-		Logger::logMessage(Logger::LEVEL_USER, "For assistance, please upload the installation log files to the Kaltura CE forum at kaltura.org");
-	}
-	else
-	{
-		Logger::logMessage(Logger::LEVEL_USER, "For assistance, please contant the support team at support@kaltura.com with the installation log files attached");
-	}
+
+	Logger::logMessage(Logger::LEVEL_USER, "For assistance, please contact the support team at support@kaltura.com with the installation log files attached");
 
 	Logger::logMessage(Logger::LEVEL_USER, "Installation log files:");
 	Logger::logMessage(Logger::LEVEL_USER, "\t - $logPath");
