@@ -749,7 +749,6 @@ class AppConfig
 		self::set(AppConfigAttribute::SPHINX_MACHINES_NAMES, implode(',', self::getMachinesByComponent('sphinx')));
 		self::set(AppConfigAttribute::POPULATE_MACHINES_NAMES, implode(',', self::getMachinesByComponent('populate')));
 		self::set(AppConfigAttribute::DWH_MACHINES_NAMES, implode(',', self::getMachinesByComponent('dwh')));
-		self::set(AppConfigAttribute::RED5_MACHINES_NAMES, implode(',', self::getMachinesByComponent('red5')));
 		
 		self::set(AppConfigAttribute::MACHINE_NAME, self::getMachinesNames());
 	}
@@ -816,7 +815,6 @@ class AppConfig
 			'populate' => 'Indexing synchronizer (sphinx populate)',
 			'dwh' => 'Data Warehouse',
 			'batch' => 'Batch Server',
-			'red5' => 'Media Server (red5)',
 			'monitor' => 'Monitor (nagios)',
 			'cleanup' => 'Old content cleanup',
 		);
