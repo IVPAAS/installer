@@ -27,12 +27,12 @@ if(isset($options['h']))
 	echo " -p - Package XML path or URL." . PHP_EOL;
 	echo " -d - Don't validate installation." . PHP_EOL;
 	echo " -v - Verbose output." . PHP_EOL;
-	echo " -g - Upgrade from version (7 - Gemini)." . PHP_EOL;
+	echo " -g - Upgrade from version (8 - Hercules)." . PHP_EOL;
 	echo " -e - E-mail logs and results." . PHP_EOL;
 	echo " -C - Comma seperated components list (api,db,sphinx,populate,batch,dwh,admin,var,apps,cleanup,ssl,monitor)." . PHP_EOL;
 	echo "      Use * for all default components, for example, *,ssl." . PHP_EOL;
 	
-	// don't tell anyone it's possibler
+	// don't tell anyone it's possible
 	// echo " -a - Auto-generate activation key." . PHP_EOL;
 	
 	echo PHP_EOL;
@@ -113,11 +113,8 @@ if(isset($options['p']))
 
 echo PHP_EOL;
 Logger::logColorMessage(Logger::COLOR_YELLOW, Logger::LEVEL_USER, "Installing Kaltura " . AppConfig::get(AppConfigAttribute::KALTURA_VERSION));
-if (AppConfig::get(AppConfigAttribute::KALTURA_VERSION_TYPE) == AppConfig::K_CE_TYPE) {
-	Logger::logMessage(Logger::LEVEL_USER, "Thank you for installing Kaltura Video Platform - Community Edition");
-} else {
-	Logger::logMessage(Logger::LEVEL_USER, "Thank you for installing Kaltura Video Platform");
-}
+Logger::logMessage(Logger::LEVEL_USER, "Thank you for installing Kaltura Video Platform");
+
 echo PHP_EOL;
 
 

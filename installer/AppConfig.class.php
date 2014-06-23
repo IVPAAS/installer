@@ -210,7 +210,6 @@ class AppConfigAttribute
 class AppConfig
 {
 	const K_TM_TYPE = 'TM';
-	const K_CE_TYPE = 'CE';
 	
 	const KEY_NO_EXPIRE = 'never';
 	const KEY_TYPE_ACTIVATION = 1; // activation key type
@@ -272,8 +271,7 @@ class AppConfig
 		}
 		else
 		{
-			if(is_null($type))
-				$type = self::K_CE_TYPE;
+			$type = self::K_TM_TYPE;
 
 			self::initField(AppConfigAttribute::KALTURA_VERSION_TYPE, $type);
 			self::initField(AppConfigAttribute::KALTURA_VERSION, "Kaltura-$type");
@@ -324,9 +322,6 @@ class AppConfig
 
 	public static function calculateActivationKey()
 	{
-		if (AppConfig::get(AppConfigAttribute::KALTURA_VERSION_TYPE) == AppConfig::K_CE_TYPE)
-			AppConfig::set(AppConfigAttribute::ACTIVATION_KEY, 'false');
-
 		if(AppConfig::get(AppConfigAttribute::ACTIVATION_KEY) === true)
 		{
 			$admin_email = AppConfig::get(AppConfigAttribute::ADMIN_CONSOLE_ADMIN_MAIL);
