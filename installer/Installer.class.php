@@ -328,6 +328,7 @@ class Installer
 		AppConfig::set(AppConfigAttribute::KMC_LOGIN_VERSION, AppConfig::getServerConfig('kmc_login_version'));
 		AppConfig::set(AppConfigAttribute::CLIPAPP_VERSION, AppConfig::getServerConfig('clipapp_version'));
 		AppConfig::set(AppConfigAttribute::HTML5_VERSION, AppConfig::getServerConfig('html5_version'));
+		AppConfig::set(AppConfigAttribute::STUDIO_VERSION, AppConfig::getServerConfig('studio_version'));
 		
 		if(OsUtils::isWindows())
 		{

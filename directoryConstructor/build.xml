@@ -193,7 +193,14 @@
 										<if>
 											<isset property="directory.attributes.${directory.id}.release" />
 											<then>
-												<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/releases/download/${directory.attributes.${directory.id}.release}/${directory.attributes.${directory.id}.release}.zip" />
+												<if>
+													<isset property="directory.attributes.${directory.id}.releaseName" />
+													<then>
+														<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/releases/download/${directory.attributes.${directory.id}.release}/${directory.attributes.${directory.id}.releaseName}.zip" />
+													</then>
+													<else>
+														<property name="directory.releaseUrl" value="${git.protocol}://${git.domain}${directory.attributes.${directory.id}.gitPath}/releases/download/${directory.attributes.${directory.id}.release}/${directory.attributes.${directory.id}.release}.zip" />
+													</else>
 												<httpget url="${directory.releaseUrl}" dir="${directory.fullPath}/../" filename="${directory.attributes.${directory.id}.release}.zip" followRedirects="true" sslVerifyPeer="false" />
 												<unzip file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip" todir="${directory.fullPath}/../" forceExtract="true" />
 												<delete file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip"/>
