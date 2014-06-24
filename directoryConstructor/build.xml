@@ -203,7 +203,15 @@
 													</else>
 												</if>
 												<httpget url="${directory.releaseUrl}" dir="${directory.fullPath}/../" filename="${directory.attributes.${directory.id}.release}.zip" followRedirects="true" sslVerifyPeer="false" />
-												<unzip file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip" todir="${directory.fullPath}/../" forceExtract="true" />
+												<if>
+													<isset property="directory.attributes.${directory.id}.createNewFolder" />
+													<then>
+														<unzip file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip" todir="${directory.fullPath}/../${directory.attributes.${directory.id}.release}" forceExtract="true" />
+													</then>
+													<else>
+														<unzip file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip" todir="${directory.fullPath}/../" forceExtract="true" />
+													</else>
+												</if>
 												<delete file="${directory.fullPath}/../${directory.attributes.${directory.id}.release}.zip"/>
 											</then>
 											<else>

@@ -16,7 +16,7 @@
 			<v1.3_saas svnPath="/usr/local/kalprod/apps/clipapp/v1.0_saas" skipFilesOwner="true" skipFilesMode="true" />
 		</clipapp>
 		<studio>
-			<v1.3 gitPath="/kaltura/player-studio" release="v1.3" releaseName="studio_v1.3" skipFilesOwner="true" skipFilesMode="true"/>
+			<v1.3 gitPath="/kaltura/player-studio" release="v1.3" createNewFolder="true" releaseName="studio_v1.3" skipFilesOwner="true" skipFilesMode="true"/>
 		</studio>
 	</apps>
 	<log user="${OS_KALTURA_USER}" mode="0770" filesMode="0660" skipFilesOwner="true">
@@ -69,7 +69,7 @@
 					<v1.2.4 gitPath="/kaltura/kmc-login" release="v1.2.4" skipFilesOwner="true" skipFilesMode="true" />
 				</login>
 			</kmc>
-			
+
 			<!-- MediaSpace4 -->
 			<kdp3 skipFilesOwner="true" skipFilesMode="true">
 				<v3.5.14 svnPath="/usr/local/kalprod/flash/kdp3/v3.5.14" skipFilesOwner="true" skipFilesMode="true" />
