@@ -119,6 +119,7 @@
 			</kcw>
 			<kupload skipFilesOwner="true" skipFilesMode="true">
 				<v1.2.8 svnPath="/usr/local/kalprod/flash/kupload/v1.2.8" skipFilesOwner="true" skipFilesMode="true" />
+				<v1.2.9 svnPath="/usr/local/kalprod/flash/kupload/v1.2.8" skipFilesOwner="true" skipFilesMode="true" />
 			</kupload>
 
 			<krecord skipFilesOwner="true" skipFilesMode="true">
@@ -128,7 +129,14 @@
 				<v1.5.13  svnPath="/usr/local/kalprod/flash/krecord/v1.5.13" skipFilesOwner="true" skipFilesMode="true" />
 				<v1.7 gitPath="/kaltura/krecord" release="v1.7" skipFilesOwner="true" skipFilesMode="true" />
 			</krecord>
-
+			
+			<ksr skipFilesOwner="true" skipFilesMode="true">
+				<v1.0.32	svnPath="/usr/local/kalprod/flash/ksr/v1.0.32"	skipFilesOwner="true" skipFilesMode="true" />
+				<v1.0.33s	svnPath="/usr/local/kalprod/flash/ksr/v1.0.33s"	skipFilesOwner="true" skipFilesMode="true" />
+				<v1.0.33s	svnPath="/usr/local/kalprod/flash/ksr/v1.0.33s"	skipFilesOwner="true" skipFilesMode="true" />
+				<v1.0.43	svnPath="/usr/local/kalprod/flash/ksr/v1.0.43"	skipFilesOwner="true" skipFilesMode="true" />
+			</ksr>
+			
 			<kcw skipFilesOwner="true" skipFilesMode="true">
 				<v2.1.6.7 svnPath="/usr/local/kalprod/flash/kcw/v2.1.6.7" skipFilesOwner="true" skipFilesMode="true" />
 			</kcw>
@@ -276,6 +284,7 @@
 				<v1.8.5 gitPath="/kaltura/mwEmbed" archive="v1.8.5" projectName="mwEmbed" version="1.8.5" skipFilesOwner="true" skipFilesMode="true" />
 				<v1.8.9 gitPath="/kaltura/mwEmbed" archive="v1.8.9" projectName="mwEmbed" version="1.8.9" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.9 gitPath="/kaltura/mwEmbed" archive="v2.9" projectName="mwEmbed" version="2.9" skipFilesOwner="true" skipFilesMode="true" />
+				<v2.10 gitPath="/kaltura/mwEmbed" archive="v2.10" projectName="mwEmbed" version="2.10" skipFilesOwner="true" skipFilesMode="true" />
 				<v1.9.7.4 gitPath="/kaltura/mwEmbed" archive="v1.9.7.4" projectName="mwEmbed" version="1.9.7.4" skipFilesOwner="true" skipFilesMode="true" />
 			</html5lib>
 		</html5>
