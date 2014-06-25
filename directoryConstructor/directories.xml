@@ -295,5 +295,5 @@
 			<startPageLoginControl user="${OS_KALTURA_USER}" mode="0750"/>
 		</control>
 	</web>
-	<dwh user="${OS_KALTURA_USER}" gitPath="/kaltura/dwh.git" gitBranch="IX-9.1.0" mode="0750" scriptsMode="0750" filesMode="0640" />
+	<dwh user="${OS_KALTURA_USER}" gitPath="/kaltura/dwh.git" gitBranch="IX-9.4.0" mode="0750" scriptsMode="0750" filesMode="0640" />
 </base>
