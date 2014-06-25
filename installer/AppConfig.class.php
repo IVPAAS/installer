@@ -565,6 +565,7 @@ class AppConfig
 			self::initField(AppConfigAttribute::PHP_BIN, OsUtils::findBinary('php'));
 			self::initField(AppConfigAttribute::PEAR_BIN, OsUtils::findBinary('pear'));
 			self::initField(AppConfigAttribute::LOG_ROTATE_BIN, OsUtils::findBinary('logrotate'));
+			self::initField(AppConfigAttribute::KITCHEN_BIN, self::get(AppConfigAttribute::BIN_DIR). '/pentaho/kitchen.sh');
 		}
 
 		// other configurations
