@@ -22,6 +22,7 @@ class AppConfigAttribute
 	const HTTPD_BIN = 'HTTPD_BIN';
 	const LOG_ROTATE_BIN = 'LOG_ROTATE_BIN';
 	const MYSQL_BIN = 'MYSQL_BIN';
+	const KITCHEN_BIN = 'KITCHEN_BIN';
 	const IMAGE_MAGICK_BIN_DIR = 'IMAGE_MAGICK_BIN_DIR';
 	const CURL_BIN_DIR = 'CURL_BIN_DIR';
 	const SPHINX_BIN_DIR = 'SPHINX_BIN_DIR';
