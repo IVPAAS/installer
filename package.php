@@ -23,7 +23,6 @@ if($argc < 2 || isset($options['h']))
 	echo " -v - Verbose output." . PHP_EOL;
 	echo " -c - Run configurator." . PHP_EOL;
 	echo " -k - Keep temporary directory." . PHP_EOL;
-	echo " -t - Type TM/CE." . PHP_EOL;
 	
 	// don't tell anyone it's possibler
 	// echo "-a - Auto-generate activation key." . PHP_EOL;
@@ -79,8 +78,7 @@ echo PHP_EOL;
 Logger::logColorMessage(Logger::COLOR_LIGHT_BLUE, Logger::LEVEL_USER, "Kaltura Video Platform - Server Installation Packager");
 
 $type = AppConfig::K_TM_TYPE;
-if(isset($options['t']))
-	$type = $options['t'];
+
 AppConfig::init(__DIR__, $type);
 AppConfig::set(AppConfigAttribute::VERBOSE, $verbose);
 if($autoGenerateKey)
