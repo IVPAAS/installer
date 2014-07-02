@@ -160,7 +160,7 @@
 			</kcw>
 			<kclip skipFilesOwner="true" skipFilesMode="true">
 				<v1.1.4 svnPath="/usr/local/kalprod/flash/kclip/v1.1.4" skipFilesOwner="true" skipFilesMode="true" />
-				<v1.2 svnPath="/usr/local/kalprod/flash/kclip/v1.2" skipFilesOwner="true" skipFilesMode="true" />
+				<v1.2 gitPath="/kaltura/clipper" release="v1.2" createNewFolder="true" releaseName="KClip" skipFilesOwner="true" skipFilesMode="true" />
 			</kclip>
 
 			<!-- wordpress -->
