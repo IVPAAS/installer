@@ -160,6 +160,7 @@
 			</kcw>
 			<kclip skipFilesOwner="true" skipFilesMode="true">
 				<v1.1.4 svnPath="/usr/local/kalprod/flash/kclip/v1.1.4" skipFilesOwner="true" skipFilesMode="true" />
+				<v1.2 svnPath="/usr/local/kalprod/flash/kclip/v1.2" skipFilesOwner="true" skipFilesMode="true" />
 			</kclip>
 
 			<!-- wordpress -->
@@ -186,6 +187,7 @@
 				<v2.1.6.7.3 svnPath="/usr/local/kalprod/flash/kcw/v2.1.6.7.3" skipFilesOwner="true" skipFilesMode="true" />
 				<v1.6.5 svnPath="/usr/local/kalprod/flash/kcw/v1.6.5" skipFilesOwner="true" skipFilesMode="true" />
 				<v1.6.5.24461 svnPath="/usr/local/kalprod/flash/kcw/v1.6.5.24461" skipFilesOwner="true" skipFilesMode="true" />
+				<v2.2.4 svnPath="/usr/local/kalprod/flash/kcw/v2.2.4" skipFilesOwner="true" skipFilesMode="true" />
 			</kcw>
 			<kdp skipFilesOwner="true" skipFilesMode="true">
 				<dev skipFilesOwner="true" skipFilesMode="true">
