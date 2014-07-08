@@ -88,6 +88,7 @@
 				<v3.6.11 svnPath="/usr/local/kalprod/flash/kdp3/v3.6.11" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.6.16 svnPath="/usr/local/kalprod/flash/kdp3/v3.6.16" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.6.17 svnPath="/usr/local/kalprod/flash/kdp3/v3.6.17" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.8 svnPath="/usr/local/kalprod/flash/kdp3/v3.8" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.8.4 svnPath="/usr/local/kalprod/flash/kdp3/v3.8.4" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.8.5 svnPath="/usr/local/kalprod/flash/kdp3/v3.8.5" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.4.10.1 svnPath="/usr/local/kalprod/flash/kdp3/v3.4.10.1" skipFilesOwner="true" skipFilesMode="true" />
@@ -242,6 +243,9 @@
 						</kcw>
 						<nab svnPath="/usr/local/kalsource/uiconf/kaltura/kmc/nab" skipFilesOwner="true" skipFilesMode="true"/>
 					</kmc>
+					<kdp3 skipFilesOwner="true" skipFilesMode="true">
+						<kdp3.3.9.19.508 svnPath="/usr/local/kalsource/uiconf/kaltura/kdp3/kdp3.3.9.19.508" skipFilesOwner="true" skipFilesMode="true" />
+					</kdp3>
 					<generic>
 						<kcw_2.1.5 svnPath="/usr/local/kalsource/uiconf/kaltura/generic/kcw_2.1.5" skipFilesOwner="true" skipFilesMode="true"/>
 					</generic>
