@@ -91,6 +91,7 @@
 				<v3.8 svnPath="/usr/local/kalprod/flash/kdp3/v3.8" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.8.4 svnPath="/usr/local/kalprod/flash/kdp3/v3.8.4" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.8.5 svnPath="/usr/local/kalprod/flash/kdp3/v3.8.5" skipFilesOwner="true" skipFilesMode="true" />
+				<v3.8.9 svnPath="/usr/local/kalprod/flash/kdp3/v3.8.9" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.4.10.1 svnPath="/usr/local/kalprod/flash/kdp3/v3.4.10.1" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.4.5 svnPath="/usr/local/kalprod/flash/kdp3/v3.4.5" skipFilesOwner="true" skipFilesMode="true" />
 				<v3.3.9.2 svnPath="/usr/local/kalprod/flash/kdp3/v3.3.9.2" skipFilesOwner="true" skipFilesMode="true" />
@@ -292,6 +293,7 @@
 				<v1.8.9 gitPath="/kaltura/mwEmbed" archive="v1.8.9" projectName="mwEmbed" version="1.8.9" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.9 gitPath="/kaltura/mwEmbed" archive="v2.9" projectName="mwEmbed" version="2.9" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.10 gitPath="/kaltura/mwEmbed" archive="v2.10" projectName="mwEmbed" version="2.10" skipFilesOwner="true" skipFilesMode="true" />
+				<v2.10 gitPath="/kaltura/mwEmbed" archive="v2.11" projectName="mwEmbed" version="2.10" skipFilesOwner="true" skipFilesMode="true" />
 				<v1.9.7.4 gitPath="/kaltura/mwEmbed" archive="v1.9.7.4" projectName="mwEmbed" version="1.9.7.4" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.12 gitPath="/kaltura/mwEmbed" archive="v2.12" projectName="mwEmbed" version="2.12" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.12.1 gitPath="/kaltura/mwEmbed" archive="v2.12.1" projectName="mwEmbed" version="2.12.1" skipFilesOwner="true" skipFilesMode="true" />
