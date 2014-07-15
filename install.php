@@ -120,12 +120,7 @@ echo PHP_EOL;
 
 
 $report = null;
-// if user wants or have to report
-if (	AppConfig::get(AppConfigAttribute::KALTURA_VERSION_TYPE) == AppConfig::K_TM_TYPE ||
-		(	!$silentRun &&
-			AppConfig::getTrueFalse(null, "In order to improve Kaltura Community Edition, we would like your permission to send system data to Kaltura.\nThis information will be used exclusively for improving our software and our service quality. I agree", 'y')
-		)
-)
+
 {
 	$report_message = "If you wish, please provide your email address so that we can offer you future assistance (leave empty to pass)";
 	$report_error_message = "Email must be in a valid email format";
