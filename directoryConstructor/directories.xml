@@ -269,7 +269,7 @@
 			<entry mode="0770" filesMode="0640" skipFilesOwner="true" />
 			<metadata mode="0770" filesMode="0640" skipFilesOwner="true" />
 			<batchfiles mode="0750" filesMode="0640" skipFilesOwner="true" />
-			<docs gitPath="/kaltura/kmc-docs.git" mode="0700" filesMode="0400" skipFilesOwner="true" />
+			<docs gitPath="/kaltura/kmc-docs.git" gitBranch="master" mode="0700" filesMode="0400" skipFilesOwner="true" />
 			<templates svnPath="/usr/local/kalsource/on-premise/trunk/packaging/templates" mode="0700" filesMode="0400" skipFilesOwner="true" />
 			<clientlibs user="${OS_KALTURA_USER}" mode="0750" filesMode="0640" skipFilesOwner="true" />
 		</content>

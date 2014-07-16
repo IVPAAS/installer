@@ -181,7 +181,8 @@
 							<then>
 								<echo message="Pull git repository [${directory.fullPath}]" />
 								<gitcheckout gitPath="${git.bin}" repository="${directory.fullPath}" force="true" branchname="${directory.attributes.${directory.id}.gitBranch}" />
-								<gitpull gitPath="${git.bin}" repository="${directory.fullPath}" strategy="theirs" source="origin" refspec="${directory.attributes.${directory.id}.gitBranch}" tags="true" force="true" />
+								<exec command="git pull -s recursive -X theirs --force ${directory.attributes.${directory.id}.gitBranch}"/>
+								<!--<gitpull gitPath="${git.bin}" repository="${directory.fullPath}" strategy="recursive" strategyOption="theirs" source="origin" refspec="${directory.attributes.${directory.id}.gitBranch}" tags="true" force="true" />-->
 							</then>
 							<else>
 								<if>
