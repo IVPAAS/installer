@@ -25,7 +25,7 @@
 			<data user="${OS_KALTURA_USER}" skipFilesMode="true" />
 		</sphinx>
 	</log>
-	<bin user="${OS_KALTURA_USER}" gitPath="/kaltura/server-bin-${OS_TYPE}-64bit.git" mode="0770" filesMode="0770" scriptsMode="0770" />
+	<bin user="${OS_KALTURA_USER}" gitPath="/kaltura/server-bin-${OS_TYPE}-64bit.git" gitBranch="master" mode="0770" filesMode="0770" scriptsMode="0770" />
 	<sphinx user="${OS_KALTURA_USER}" mode="0700"  />
 	<tmp user="${OS_KALTURA_USER}" mode="0700" filesMode="0600">
 		<convert user="${OS_KALTURA_USER}" />
