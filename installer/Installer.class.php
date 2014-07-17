@@ -841,8 +841,7 @@ class Installer
 			
 			Logger::logMessage(Logger::LEVEL_USER, "Upgrading existing database");
 			$cmd = sprintf('%s %s/deployment/updates/update.php -u "%s"', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), AppConfig::get(AppConfigAttribute::DB_ROOT_USER));
-			if(AppConfig::get(AppConfigAttribute::DB_ROOT_PASS))
-				$cmd .= sprintf(' -p "%s"', AppConfig::get(AppConfigAttribute::DB_ROOT_PASS));
+			$cmd .= sprintf(' -p "%s"', AppConfig::get(AppConfigAttribute::DB_ROOT_PASS) ? AppConfig::get(AppConfigAttribute::DB_ROOT_PASS) : '');
 			$cmd .= ' -d';
 				
 			if (OsUtils::execute($cmd))
@@ -975,7 +974,7 @@ class Installer
 		elseif(AppConfig::get(AppConfigAttribute::UPGRADE_FROM_VERSION))
 		{
 			Logger::logMessage(Logger::LEVEL_INFO, "Upgrading data warehouse");
-			$cmd = sprintf("%s/ddl/migrations/20130922_gemini_to_IX/gemini2IX.sh $arguments", AppConfig::get(AppConfigAttribute::DWH_DIR));
+			$cmd = sprintf("%s/ddl/migrations/20140623_Hercules_to_Iris/hercules2Iris.sql $arguments", AppConfig::get(AppConfigAttribute::DWH_DIR));
 			if (!OsUtils::execute($cmd)){
 				return "Failed running data warehouse upgrade script";
 			}

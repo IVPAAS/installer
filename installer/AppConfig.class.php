@@ -1312,7 +1312,7 @@ class AppConfig
 	 */
 	private static function generatePassword()
 	{
-		Logger::logMessage(Logger::LEVEL_INFO, "Generating passwrod");
+		Logger::logMessage(Logger::LEVEL_INFO, "Generating password");
 		$password = self::makeRandomString(8, 14, false, true, true);
 		return $password;
 	}
