@@ -293,6 +293,7 @@ class Installer
 				else
 				{
 					Logger::logMessage(Logger::LEVEL_USER, "Restarting apache http server");
+					OsUtils::execute("killall " . AppConfig::get(AppConfigAttribute::APACHE_SERVICE) );
 					return OsUtils::execute("service " . AppConfig::get(AppConfigAttribute::APACHE_SERVICE) . " restart");
 				}
 			}
@@ -974,7 +975,7 @@ class Installer
 		elseif(AppConfig::get(AppConfigAttribute::UPGRADE_FROM_VERSION))
 		{
 			Logger::logMessage(Logger::LEVEL_INFO, "Upgrading data warehouse");
-			$cmd = sprintf("%s/ddl/migrations/20140623_Hercules_to_Iris/hercules2Iris.sql $arguments", AppConfig::get(AppConfigAttribute::DWH_DIR));
+			$cmd = sprintf("%s/ddl/migrations/20140623_Hercules_to_Iris/hercules2Iris.sh $arguments", AppConfig::get(AppConfigAttribute::DWH_DIR));
 			if (!OsUtils::execute($cmd)){
 				return "Failed running data warehouse upgrade script";
 			}
