@@ -89,6 +89,7 @@ if($upgrade)
 {
 	AppConfig::set(AppConfigAttribute::UNINSTALL, false);
 	AppConfig::set(AppConfigAttribute::DB1_CREATE_NEW_DB, false);
+	AppConfig::set(AppConfigAttribute::DB1_CREATE_NEW_DWH, false);
 	AppConfig::set(AppConfigAttribute::UPGRADE_FROM_VERSION, $upgrade);
 }
 
