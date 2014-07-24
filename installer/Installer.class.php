@@ -226,7 +226,7 @@ class Installer
 			}
 			
 			if(OsUtils::isLinux())
-				OsUtils::executeInBackground('killall -9 searchd');
+				OsUtils::executeInBackground('killall -w searchd');
 		}
 
 		if (is_dir(AppConfig::get(AppConfigAttribute::BASE_DIR)) && (($files = @scandir(AppConfig::get(AppConfigAttribute::BASE_DIR))) && count($files) > 2))
@@ -293,7 +293,7 @@ class Installer
 				else
 				{
 					Logger::logMessage(Logger::LEVEL_USER, "Restarting apache http server");
-					OsUtils::execute("killall " . AppConfig::get(AppConfigAttribute::APACHE_SERVICE) );
+					OsUtils::execute("killall -w " . AppConfig::get(AppConfigAttribute::APACHE_SERVICE) );
 					return OsUtils::execute("service " . AppConfig::get(AppConfigAttribute::APACHE_SERVICE) . " restart");
 				}
 			}
