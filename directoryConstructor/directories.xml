@@ -138,6 +138,7 @@
 				<v1.0.33s	svnPath="/usr/local/kalprod/flash/ksr/v1.0.33s"	skipFilesOwner="true" skipFilesMode="true" />
 				<v1.0.33s	svnPath="/usr/local/kalprod/flash/ksr/v1.0.33s"	skipFilesOwner="true" skipFilesMode="true" />
 				<v1.0.43	svnPath="/usr/local/kalprod/flash/ksr/v1.0.43"	skipFilesOwner="true" skipFilesMode="true" />
+				<v1.0.44	svnPath="/usr/local/kalprod/flash/ksr/v1.0.44"	skipFilesOwner="true" skipFilesMode="true" />
 			</ksr>
 			
 			<kcw skipFilesOwner="true" skipFilesMode="true">
