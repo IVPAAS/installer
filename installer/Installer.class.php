@@ -681,10 +681,8 @@ class Installer
 		if(in_array('api', $this->components))
 		{
 			Logger::logMessage(Logger::LEVEL_USER,
-				"To start using Kaltura, please complete the following steps:\n" .
-				"1. Add the following line to your /etc/hosts file:\n" .
-					"\t127.0.0.1 $virtualHostName\n" .
-				"2. Browse to your Kaltura start page at: $url/start\n"
+				"To start using Kaltura, please:\n" .
+				"1. Browse to your Kaltura start page at: $url/start\n"
 			);
 		}
 	}
