@@ -16,7 +16,7 @@
 			<v1.3_saas svnPath="/usr/local/kalprod/apps/clipapp/v1.0_saas" skipFilesOwner="true" skipFilesMode="true" />
 		</clipapp>
 		<studio>
-			<v1.5 gitPath="/kaltura/player-studio" release="v1.5" createNewFolder="true" releaseName="studio_v1.5" skipFilesOwner="true" skipFilesMode="true"/>
+			<v1.6 gitPath="/kaltura/player-studio" release="v1.6" createNewFolder="true" releaseName="studio_v1.6" skipFilesOwner="true" skipFilesMode="true"/>
 		</studio>
 	</apps>
 	<log user="${OS_KALTURA_USER}" mode="0770" filesMode="0660" skipFilesOwner="true">
