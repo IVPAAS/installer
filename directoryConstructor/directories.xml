@@ -227,7 +227,7 @@
 		</flash>
 		<content mode="0750" skipFilesMode="true" skipFilesOwner="true">
 			<uploads mode="0700" skipFilesMode="true" skipFilesOwner="true" />
-			<webcam mode="0700" skipFilesMode="true" skipFilesOwner="true" />
+			<webcam mode="0770" skipFilesMode="true" skipFilesOwner="true" />
 			<recorded mode="0770" skipFilesMode="true" skipFilesOwner="true" />
 			<cacheswf mode="0700" skipFilesMode="true" skipFilesOwner="true" />
 			<generatedUiConf mode="0770" skipFilesMode="true" skipFilesOwner="true" />
