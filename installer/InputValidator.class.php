@@ -27,6 +27,7 @@ class InputValidator {
 	public $validateCallback = false;
 	public $numberRange;
 	public $validateTimezone = false;
+	public $validateUrl = false;
 
 	// validates the input according to the validations set, returns true if input is valid, false otherwise
 	// please note that currently it is not possible to run multiple validations
@@ -106,6 +107,13 @@ class InputValidator {
 			$valid = $valid && call_user_func($this->validateCallback, $input);
 			if(!$valid)
 				Logger::logMessage(Logger::LEVEL_INFO, "Input [$input] is not valid according to callback");
+		}
+		
+		if ($valid && $input && $this->validateUrl)
+		{
+			$valid = (filter_var($input, FILTER_VALIDATE_URL));
+			if(!$valid)
+				Logger::logMessage(Logger::LEVEL_INFO, "Input [$input] is not a valid URL");
 		}
 
 		return $valid;
@@ -196,7 +204,13 @@ class InputValidator {
 		$validator->validateTimezone = true;
 		return $validator;
 	}
-
+		
+	public static function createUrlValidator() {
+		$validator = new InputValidator();
+		$validator->validateUrl = true;
+		return $validator;
+	}
+	
 	private function isValidTimezone($timezoneId)
 	{
 		$savedZone = date_default_timezone_get();

@@ -391,8 +391,11 @@ class AppConfig
 
 			self::getInput(AppConfigAttribute::BASE_DIR, "Full target directory path for Kaltura application (leave empty for $defaultBaseDir)", "Target directory must be a valid directory path, please enter again", InputValidator::createDirectoryValidator(), $defaultBaseDir);
 
-			self::getInput(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME, "Please enter the domain name that will be used for the Kaltura server (without http://, leave empty for $hostname)", 'Must be a valid hostname or ip, please enter again', InputValidator::createHostValidator(), $hostname);
+			if (self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME) != hostname)
+				self::getInput(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME, "Please enter the domain name that will be used for the Kaltura server (without http://, leave empty for $hostname)", 'Must be a valid hostname or ip, please enter again', InputValidator::createUrlValidator(), $hostname);
 
+			
+			
 			self::getInput(AppConfigAttribute::ADMIN_CONSOLE_ADMIN_MAIL, "Your primary system administrator email address", "Email must be in a valid email format, please enter again", InputValidator::createEmailValidator(false), null);
 
 			self::getInput(AppConfigAttribute::ADMIN_CONSOLE_PASSWORD, "The password you want to set for your primary administrator", "Password should not be empty and should not contain whitespaces, please enter again", InputValidator::createNoWhitespaceValidator(), null, true);
@@ -437,6 +440,8 @@ class AppConfig
 				self::getInput(AppConfigAttribute::SSL_CERTIFICATE_CHAIN_FILE, "SSL certificate chain file path", 'File not found', InputValidator::createFileValidator());
 			}
 			
+			
+			
 			self::initField(AppConfigAttribute::ENVIRONMENT_PROTOCOL, 'http');
 		}
 	
@@ -463,6 +468,8 @@ class AppConfig
 		elseif(self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_PORT) != 80 && self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_PORT) != 443)
 			self::set(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME, self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME) . ':' . self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_PORT));
 
+		self::getInput(AppConfigAttribute::SERVICE_URL, "Please enter the service URL that will be used for the Kaltura services (including protocol) ", 'Must be a valid URL, please enter again', InputValidator::createHostValidator(), self::get(AppConfigAttribute::ENVIRONMENT_PROTOCOL) . "://" . self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
+			
 		if(!self::$packageDir)
 			self::init(self::get(AppConfigAttribute::BASE_DIR));
 
@@ -505,15 +512,15 @@ class AppConfig
 		self::initField(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME, self::extractHostName(self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME)));
 		self::initField(AppConfigAttribute::ENVIRONMENT_NAME, self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME));
 		self::initField(AppConfigAttribute::CORP_REDIRECT, '');
-		self::initField(AppConfigAttribute::CDN_HOST, self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
-		self::initField(AppConfigAttribute::IIS_HOST, self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
-		self::initField(AppConfigAttribute::RTMP_URL, 'rtmp://' . self::get(AppConfigAttribute::ENVIRONMENT_NAME) . '/oflaDemo');
+		self::initField(AppConfigAttribute::CDN_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)));
+		self::initField(AppConfigAttribute::IIS_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)));
+		self::initField(AppConfigAttribute::RTMP_URL, 'rtmp://' . self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)) . '/oflaDemo');
 		self::initField(AppConfigAttribute::MEMCACHE_HOST, self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME));
 		self::initField(AppConfigAttribute::GLOBAL_MEMCACHE_HOST, self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME));
-		self::initField(AppConfigAttribute::WWW_HOST, self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
-		self::initField(AppConfigAttribute::PRIMARY_MEDIA_SERVER_HOST, self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
+		self::initField(AppConfigAttribute::WWW_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)));
+		self::initField(AppConfigAttribute::PRIMARY_MEDIA_SERVER_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)));
 		self::initField(AppConfigAttribute::SECONDARY_MEDIA_SERVER_HOST, '');
-		self::initField(AppConfigAttribute::SERVICE_URL, self::get(AppConfigAttribute::ENVIRONMENT_PROTOCOL) . '://' . self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
+		//self::initField(AppConfigAttribute::SERVICE_URL, self::get(AppConfigAttribute::ENVIRONMENT_PROTOCOL) . '://' . self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
 
 		// admin console defaults
 		self::initField(AppConfigAttribute::UICONF_TAB_ACCESS, 'SYSTEM_ADMIN_BATCH_CONTROL');
@@ -595,8 +602,8 @@ class AppConfig
 		self::initField(AppConfigAttribute::CONTACT_URL, 'http://corp.kaltura.com/contact');
 		self::initField(AppConfigAttribute::CONTACT_PHONE_NUMBER, '+1 800 871-5224');
 		self::initField(AppConfigAttribute::BEGINNERS_TUTORIAL_URL, 'http://corp.kaltura.com/about/dosignup');
-		self::initField(AppConfigAttribute::QUICK_START_GUIDE_URL, self::get(AppConfigAttribute::ENVIRONMENT_PROTOCOL) . '://' . self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME) . '/content/docs/pdf/KMC_User_Manual.pdf');
-		self::initField(AppConfigAttribute::UNSUBSCRIBE_EMAIL_URL, self::get(AppConfigAttribute::ENVIRONMENT_PROTOCOL) . '://' . self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME) . '/index.php/extwidget/blockMail?e=');
+		self::initField(AppConfigAttribute::QUICK_START_GUIDE_URL, self::get(AppConfigAttribute::SERVICE_URL) . '/content/docs/pdf/KMC_User_Manual.pdf');
+		self::initField(AppConfigAttribute::UNSUBSCRIBE_EMAIL_URL, self::get(AppConfigAttribute::SERVICE_URL) . '/index.php/extwidget/blockMail?e=');
 
 		self::initField(AppConfigAttribute::OS_ROOT_USER, (isset($_SERVER['USER']) ? $_SERVER['USER'] : 'root'));
 		self::initField(AppConfigAttribute::OS_APACHE_USER, 'apache');
