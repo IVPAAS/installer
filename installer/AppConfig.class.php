@@ -398,9 +398,11 @@ class AppConfig
 
 			self::getInput(AppConfigAttribute::BASE_DIR, "Full target directory path for Kaltura application (leave empty for $defaultBaseDir)", "Target directory must be a valid directory path, please enter again", InputValidator::createDirectoryValidator(), $defaultBaseDir);
 
-			if (self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME) != hostname)
+			if (is_null(self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME)) ||
+				(is_array(self::$components) && self::requiresApacheConfiguration() &&	self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME) != $hostname))
+			{
 				self::getInput(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME, "Please enter the domain name that will be used for the Kaltura server (without http://, leave empty for $hostname)", 'Must be a valid hostname or ip, please enter again', InputValidator::createUrlValidator(), $hostname);
-
+			}
 			
 			
 			self::getInput(AppConfigAttribute::ADMIN_CONSOLE_ADMIN_MAIL, "Your primary system administrator email address", "Email must be in a valid email format, please enter again", InputValidator::createEmailValidator(false), null);
@@ -1461,6 +1463,17 @@ class AppConfig
 			return $ret;
 
 		return $url;
+	}
+	
+	/**
+	* @return bool
+	*/
+	private static function requiresApacheConfiguration ()
+	{
+		if(in_array('api', self::$components) || in_array('apps', self::$components) || in_array('var', self::$components) || in_array('admin', self::$components))
+			return true;
+			
+		return false;
 	}
 
 	/**
