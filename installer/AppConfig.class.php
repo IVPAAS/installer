@@ -401,7 +401,7 @@ class AppConfig
 			if (is_null(self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME)) ||
 				(is_array(self::$components) && self::requiresApacheConfiguration() &&	self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME) != $hostname))
 			{
-				self::getInput(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME, "Please enter the domain name that will be used for the Kaltura server (without http://, leave empty for $hostname)", 'Must be a valid hostname or ip, please enter again', InputValidator::createUrlValidator(), $hostname);
+				self::getInput(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME, "Please enter the domain name that will be used for the Kaltura server (without http://, leave empty for $hostname)", 'Must be a valid hostname or ip, please enter again', InputValidator::createHostValidator(), $hostname);
 			}
 			
 			
@@ -477,7 +477,7 @@ class AppConfig
 		elseif(self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_PORT) != 80 && self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_PORT) != 443)
 			self::set(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME, self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME) . ':' . self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_PORT));
 
-		self::getInput(AppConfigAttribute::SERVICE_URL, "Please enter the service URL that will be used for the Kaltura services (including protocol) ", 'Must be a valid URL, please enter again', InputValidator::createHostValidator(), self::get(AppConfigAttribute::ENVIRONMENT_PROTOCOL) . "://" . self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
+		self::getInput(AppConfigAttribute::SERVICE_URL, "Please enter the service URL that will be used for the Kaltura services (including protocol) ", 'Must be a valid URL, please enter again', InputValidator::createUrlValidator(), self::get(AppConfigAttribute::ENVIRONMENT_PROTOCOL) . "://" . self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
 			
 		if(!self::$packageDir)
 			self::init(self::get(AppConfigAttribute::BASE_DIR));
@@ -786,12 +786,12 @@ class AppConfig
 		}
 		
 		if($upgrade)
-{
-	AppConfig::set(AppConfigAttribute::UNINSTALL, false);
-	AppConfig::set(AppConfigAttribute::DB1_CREATE_NEW_DB, false);
-	AppConfig::set(AppConfigAttribute::DB1_CREATE_NEW_DWH, false);
-	AppConfig::set(AppConfigAttribute::UPGRADE_FROM_VERSION, $upgrade);
-}
+		{
+			AppConfig::set(AppConfigAttribute::UNINSTALL, false);
+			AppConfig::set(AppConfigAttribute::DB1_CREATE_NEW_DB, false);
+			AppConfig::set(AppConfigAttribute::DB1_CREATE_NEW_DWH, false);
+			AppConfig::set(AppConfigAttribute::UPGRADE_FROM_VERSION, $upgrade);
+		}
 		
 		self::initField(AppConfigAttribute::VERIFY_INSTALLATION, true);
 		self::initField(AppConfigAttribute::DEPLOY_KMC, true);
