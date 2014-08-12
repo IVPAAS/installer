@@ -521,12 +521,12 @@ class AppConfig
 		self::initField(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME, self::extractHostName(self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME)));
 		self::initField(AppConfigAttribute::ENVIRONMENT_NAME, self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME));
 		self::initField(AppConfigAttribute::CORP_REDIRECT, '');
-		self::initField(AppConfigAttribute::CDN_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)));
-		self::initField(AppConfigAttribute::IIS_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)));
+		self::initField(AppConfigAttribute::CDN_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)).':'. self::extractPort(self::get(AppConfigAttribute::SERVICE_URL)));
+		self::initField(AppConfigAttribute::IIS_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)).':'. self::extractPort(self::get(AppConfigAttribute::SERVICE_URL)));
 		self::initField(AppConfigAttribute::RTMP_URL, 'rtmp://' . self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)) . '/oflaDemo');
 		self::initField(AppConfigAttribute::MEMCACHE_HOST, self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME));
 		self::initField(AppConfigAttribute::GLOBAL_MEMCACHE_HOST, self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME));
-		self::initField(AppConfigAttribute::WWW_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)));
+		self::initField(AppConfigAttribute::WWW_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)).':'. self::extractPort(self::get(AppConfigAttribute::SERVICE_URL)));
 		self::initField(AppConfigAttribute::PRIMARY_MEDIA_SERVER_HOST, self::extractHostName(self::get(AppConfigAttribute::SERVICE_URL)));
 		self::initField(AppConfigAttribute::SECONDARY_MEDIA_SERVER_HOST, '');
 		//self::initField(AppConfigAttribute::SERVICE_URL, self::get(AppConfigAttribute::ENVIRONMENT_PROTOCOL) . '://' . self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME));
@@ -1467,6 +1467,20 @@ class AppConfig
 	private static function extractHostName($url)
 	{
 		$ret = parse_url($url, PHP_URL_HOST);
+		if($ret)
+			return $ret;
+
+		return $url;
+	}
+	
+	/**
+	 * Extract the host name out of URL
+	 * @param string $url
+	 * @return string
+	 */
+	private static function extractPort($url)
+	{
+		$ret = parse_url($url, PHP_URL_PORT);
 		if($ret)
 			return $ret;
 
