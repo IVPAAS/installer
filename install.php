@@ -85,14 +85,6 @@ AppConfig::set(AppConfigAttribute::VERBOSE, $verbose);
 if($autoGenerateKey)
 	AppConfig::set(AppConfigAttribute::ACTIVATION_KEY, true);
 
-if($upgrade)
-{
-	AppConfig::set(AppConfigAttribute::UNINSTALL, false);
-	AppConfig::set(AppConfigAttribute::DB1_CREATE_NEW_DB, false);
-	AppConfig::set(AppConfigAttribute::DB1_CREATE_NEW_DWH, false);
-	AppConfig::set(AppConfigAttribute::UPGRADE_FROM_VERSION, $upgrade);
-}
-
 AppConfig::configure($silentRun, false, $upgrade);
 
 $downloadAttributes = array();

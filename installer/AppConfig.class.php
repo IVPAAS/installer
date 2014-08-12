@@ -784,7 +784,15 @@ class AppConfig
 			else
 				self::initField(AppConfigAttribute::PLAY_PARTNER_SECRET, self::generateSecret());
 		}
-
+		
+		if($upgrade)
+{
+	AppConfig::set(AppConfigAttribute::UNINSTALL, false);
+	AppConfig::set(AppConfigAttribute::DB1_CREATE_NEW_DB, false);
+	AppConfig::set(AppConfigAttribute::DB1_CREATE_NEW_DWH, false);
+	AppConfig::set(AppConfigAttribute::UPGRADE_FROM_VERSION, $upgrade);
+}
+		
 		self::initField(AppConfigAttribute::VERIFY_INSTALLATION, true);
 		self::initField(AppConfigAttribute::DEPLOY_KMC, true);
 
