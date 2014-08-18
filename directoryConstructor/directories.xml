@@ -299,6 +299,7 @@
 				<v2.12 gitPath="/kaltura/mwEmbed" archive="v2.12" projectName="mwEmbed" version="2.12" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.12.1 gitPath="/kaltura/mwEmbed" archive="v2.12.1" projectName="mwEmbed" version="2.12.1" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.15 gitPath="/kaltura/mwEmbed" archive="v2.15" projectName="mwEmbed" version="2.15" skipFilesOwner="true" skipFilesMode="true" />
+				<v2.16 gitPath="/kaltura/mwEmbed" archive="v2.16" projectName="mwEmbed" version="2.16" skipFilesOwner="true" skipFilesMode="true" />
 			</html5lib>
 		</html5>
 		<log user="${OS_KALTURA_USER}" mode="0750" />
