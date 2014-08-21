@@ -1238,7 +1238,7 @@ class AppConfig
 		if(! defined("AppConfigAttribute::$key"))
 			throw new Exception("Configuration key [$key] not defined");
 
-		if(!isset(self::$config[$key]))
+		if(!isset(self::$config[$key]) || self::$config[$key] != $value)
 			self::$config[$key] = $value;
 	}
 
