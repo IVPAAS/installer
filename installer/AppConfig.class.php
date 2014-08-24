@@ -401,6 +401,7 @@ class AppConfig
 			if (is_null(self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME)) ||
 				(is_array(self::$components) && self::requiresApacheConfiguration() &&	self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME) != $hostname))
 			{
+				self::set (AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME, null);
 				self::getInput(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME, "Please enter the domain name that will be used for the Kaltura server (without http://, leave empty for $hostname)", 'Must be a valid hostname or ip, please enter again', InputValidator::createHostValidator(), $hostname);
 			}
 			
