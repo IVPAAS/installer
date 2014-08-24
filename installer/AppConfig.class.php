@@ -519,7 +519,7 @@ class AppConfig
 		self::initField(AppConfigAttribute::CURL_BIN_DIR, "/usr/bin");
 
 		// site settings
-		self::initField(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME, self::extractHostName(self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME)));
+		self::set(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME, self::extractHostName(self::get(AppConfigAttribute::KALTURA_FULL_VIRTUAL_HOST_NAME)));
 		self::initField(AppConfigAttribute::ENVIRONMENT_NAME, self::get(AppConfigAttribute::KALTURA_VIRTUAL_HOST_NAME));
 		self::initField(AppConfigAttribute::CORP_REDIRECT, '');
 		
@@ -1239,7 +1239,7 @@ class AppConfig
 		if(! defined("AppConfigAttribute::$key"))
 			throw new Exception("Configuration key [$key] not defined");
 
-		if(!isset(self::$config[$key]) || self::$config[$key] != $value)
+		if(!isset(self::$config[$key]))
 			self::$config[$key] = $value;
 	}
 
