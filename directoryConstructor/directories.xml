@@ -16,7 +16,7 @@
 			<v1.3_saas svnPath="/usr/local/kalprod/apps/clipapp/v1.0_saas" skipFilesOwner="true" skipFilesMode="true" />
 		</clipapp>
 		<studio>
-			<v1.6 gitPath="/kaltura/player-studio" release="v1.6" createNewFolder="true" releaseName="studio_v1.6" skipFilesOwner="true" skipFilesMode="true"/>
+			<v1.7 gitPath="/kaltura/player-studio" release="v1.7" createNewFolder="true" releaseName="studio_v1.7" skipFilesOwner="true" skipFilesMode="true"/>
 		</studio>
 	</apps>
 	<log user="${OS_KALTURA_USER}" mode="0770" filesMode="0660" skipFilesOwner="true">
@@ -299,7 +299,7 @@
 				<v2.12 gitPath="/kaltura/mwEmbed" archive="v2.12" projectName="mwEmbed" version="2.12" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.12.1 gitPath="/kaltura/mwEmbed" archive="v2.12.1" projectName="mwEmbed" version="2.12.1" skipFilesOwner="true" skipFilesMode="true" />
 				<v2.15 gitPath="/kaltura/mwEmbed" archive="v2.15" projectName="mwEmbed" version="2.15" skipFilesOwner="true" skipFilesMode="true" />
-				<v2.16 gitPath="/kaltura/mwEmbed" archive="v2.16" projectName="mwEmbed" version="2.16" skipFilesOwner="true" skipFilesMode="true" />
+				<v2.17 gitPath="/kaltura/mwEmbed" archive="v2.17" projectName="mwEmbed" version="2.17" skipFilesOwner="true" skipFilesMode="true" />
 			</html5lib>
 		</html5>
 		<log user="${OS_KALTURA_USER}" mode="0750" />
