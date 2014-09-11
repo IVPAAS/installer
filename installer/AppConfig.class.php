@@ -1071,7 +1071,8 @@ class AppConfig
 						continue;
 					}
 					
-					$hostConfig[AppConfigAttribute::DB1_CREATE_NEW_DWH] = true;
+					if (!AppConfig::get(AppConfigAttribute::UPGRADE_FROM_VERSION))
+						$hostConfig[AppConfigAttribute::DB1_CREATE_NEW_DWH] = true;
 				}
 
 				if($component == 'ssl')
