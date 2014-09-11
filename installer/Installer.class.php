@@ -961,21 +961,22 @@ class Installer
 			$arguments .= ' -p ' . AppConfig::get(AppConfigAttribute::DB_ROOT_PASS);
 			
 		$config = AppConfig::getCurrentMachineConfig();
-		if(AppConfig::get(AppConfigAttribute::DB1_CREATE_NEW_DWH) ||
+		
+		if(AppConfig::get(AppConfigAttribute::UPGRADE_FROM_VERSION))
+		{
+			Logger::logMessage(Logger::LEVEL_INFO, "Upgrading data warehouse");
+			$cmd = sprintf("%s/ddl/migrations/20140623_Hercules_to_Iris/hercules2Iris.sh $arguments", AppConfig::get(AppConfigAttribute::DWH_DIR));
+			if (!OsUtils::execute($cmd)){
+				return "Failed running data warehouse upgrade script";
+			}
+		}
+		elseif(AppConfig::get(AppConfigAttribute::DB1_CREATE_NEW_DWH) ||
 		($config && isset ($config[AppConfigAttribute::DB1_CREATE_NEW_DWH]) && $config[AppConfigAttribute::DB1_CREATE_NEW_DWH]))
 		{
 			Logger::logMessage(Logger::LEVEL_INFO, "Creating data warehouse");
 			$cmd = sprintf("%s/setup/dwh_setup.sh $arguments", AppConfig::get(AppConfigAttribute::DWH_DIR));	
 			if (!OsUtils::execute($cmd)){
 				return "Failed running data warehouse initialization script";
-			}
-		}
-		elseif(AppConfig::get(AppConfigAttribute::UPGRADE_FROM_VERSION))
-		{
-			Logger::logMessage(Logger::LEVEL_INFO, "Upgrading data warehouse");
-			$cmd = sprintf("%s/ddl/migrations/20140623_Hercules_to_Iris/hercules2Iris.sh $arguments", AppConfig::get(AppConfigAttribute::DWH_DIR));
-			if (!OsUtils::execute($cmd)){
-				return "Failed running data warehouse upgrade script";
 			}
 		}
 		
