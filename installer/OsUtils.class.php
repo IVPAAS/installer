@@ -186,7 +186,7 @@ class OsUtils {
 			}
 			else
 			{
-				if(preg_match('/[=&;!@#$%^*|()-+{}:?~]/', $value))
+				if(preg_match('/[=&]/', $value))
 					$value = '"' . trim($value, '"') . '"';
 
 				$data .= "$key=$value" . PHP_EOL;
@@ -286,8 +286,8 @@ class OsUtils {
 	{
 		if(OsUtils::isWindows())
 		{
-			OsUtils::execute(AppConfig::get(AppConfigAttribute::PHP_BIN) . " $service install");
-			return OsUtils::execute(AppConfig::get(AppConfigAttribute::PHP_BIN) . " $service stop");
+			OsUtils::execute('"' . AppConfig::get(AppConfigAttribute::PHP_BIN) . "\" $service install");
+			return OsUtils::execute('"' . AppConfig::get(AppConfigAttribute::PHP_BIN) . "\" $service stop");
 		}
 			
 		if($alwaysStartAutomtically)
@@ -312,10 +312,10 @@ class OsUtils {
 			if(!file_exists($service))
 				return true;
 								
-			$ret = OsUtils::executeInBackground(AppConfig::get(AppConfigAttribute::PHP_BIN) . " $service stop");
+			$ret = OsUtils::executeInBackground('"' . AppConfig::get(AppConfigAttribute::PHP_BIN) . "\" $service stop");
 			
 			if($neverStartAutomtically)
-				OsUtils::executeInBackground(AppConfig::get(AppConfigAttribute::PHP_BIN) . " $service uninstall");
+				OsUtils::executeInBackground('"' . AppConfig::get(AppConfigAttribute::PHP_BIN) . "\" $service uninstall");
 				
 			return $ret;
 		}
@@ -483,7 +483,7 @@ class OsUtils {
 			
 			foreach($basePaths as $basePath)
 			{
-				$link = "$basePath/$linkPath";
+				$link = $basePath . DIRECTORY_SEPARATOR . $linkPath;
 				if(!self::symlink($target, $link))
 				{
 					Logger::logMessage(Logger::LEVEL_INFO, "Failed to create symbolic link from $link to $target.");
@@ -496,9 +496,6 @@ class OsUtils {
 		if(!file_exists(dirname($link)))
 			mkdir(dirname($link), 0755, true);
 
-		if(file_exists($link))
-			unlink($link);
-	
 		if(self::isWindows())
 		{
 			$target = self::windowsPath($target);

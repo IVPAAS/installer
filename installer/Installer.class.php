@@ -314,7 +314,7 @@ class Installer
 			if(in_array('generateClients', $this->runOnce))
 			{
 				Logger::logMessage(Logger::LEVEL_USER, "Generating client libraries");
-				return OsUtils::execute(sprintf("%s %s/generator/generate.php", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)));
+				return OsUtils::execute(sprintf("\"%s\" %s/generator/generate.php", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)));
 			}
 			return true;
 		}
@@ -749,7 +749,7 @@ class Installer
 		{
 			$filePath = realpath("$dirName/$fileName");
 
-			if (!OsUtils::execute(AppConfig::get(AppConfigAttribute::PHP_BIN) . " $filePath $configPath")) {
+			if (!OsUtils::execute('"' . AppConfig::get(AppConfigAttribute::PHP_BIN) . "\" $filePath $configPath")) {
 				Logger::logError(Logger::LEVEL_USER, "Verification failed [$filePath]");
 				return false;
 			}
@@ -839,8 +839,9 @@ class Installer
 				return false;
 			
 			Logger::logMessage(Logger::LEVEL_USER, "Upgrading existing database");
-			$cmd = sprintf('%s %s/deployment/updates/update.php -u "%s"', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), AppConfig::get(AppConfigAttribute::DB_ROOT_USER));
-			$cmd .= sprintf(' -p "%s"', AppConfig::get(AppConfigAttribute::DB_ROOT_PASS) ? AppConfig::get(AppConfigAttribute::DB_ROOT_PASS) : '');
+			$cmd = sprintf('"%s" %s/deployment/updates/update.php -u "%s"', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), AppConfig::get(AppConfigAttribute::DB_ROOT_USER));
+			if(AppConfig::get(AppConfigAttribute::DB_ROOT_PASS))
+				$cmd .= sprintf(' -p "%s"', AppConfig::get(AppConfigAttribute::DB_ROOT_PASS));
 			$cmd .= ' -d';
 				
 			if (OsUtils::execute($cmd))
@@ -860,13 +861,13 @@ class Installer
 	private function createDynamicEnums()
 	{
 		Logger::logMessage(Logger::LEVEL_USER, "Creating plugins dynamic enumerations");
-		return OsUtils::execute(sprintf("%s %s/deployment/base/scripts/installPlugins.php", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)));
+		return OsUtils::execute(sprintf('"%s" %s/deployment/base/scripts/installPlugins.php', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)));
 	}
 
 	private function createQueryCacheTriggers()
 	{
 		Logger::logMessage(Logger::LEVEL_USER, "Creating query cache triggers");
-		return OsUtils::execute(sprintf("%s %s/deployment/base/scripts/createQueryCacheTriggers.php", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)));
+		return OsUtils::execute(sprintf('"%s" %s/deployment/base/scripts/createQueryCacheTriggers.php', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)));
 	}
 
 	private function createDeployKMC()
@@ -889,7 +890,7 @@ class Installer
 			foreach($this->installConfig[Installer::BASE_COMPONENT]['uiconfs_2'] as $uiconfapp)
 			{
 				$to_deploy = AppConfig::replaceTokensInString($uiconfapp);
-				if(OsUtils::execute(sprintf("%s %s/deployment/uiconf/deploy_v2.php --ini=%s --user=%s --group=%s", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), $to_deploy, AppConfig::get(AppConfigAttribute::OS_APACHE_USER), AppConfig::get(AppConfigAttribute::OS_KALTURA_GROUP))))
+				if(OsUtils::execute(sprintf('"%s" %s/deployment/uiconf/deploy_v2.php --ini=%s --user=%s --group=%s', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), $to_deploy, AppConfig::get(AppConfigAttribute::OS_APACHE_USER), AppConfig::get(AppConfigAttribute::OS_KALTURA_GROUP))))
 				{
 					Logger::logMessage(Logger::LEVEL_INFO, "Deployed user interface configuration files $to_deploy");
 				}
@@ -917,7 +918,7 @@ class Installer
 			return true;
 			
 		Logger::logMessage(Logger::LEVEL_USER, "Creating databases initial content");
-		if (OsUtils::execute(sprintf("%s %s/deployment/base/scripts/insertDefaults.php %s/deployment/base/scripts/init_data", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), AppConfig::get(AppConfigAttribute::APP_DIR)))) {
+		if (OsUtils::execute(sprintf('"%s" %s/deployment/base/scripts/insertDefaults.php %s/deployment/base/scripts/init_data', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), AppConfig::get(AppConfigAttribute::APP_DIR)))) {
 			Logger::logMessage(Logger::LEVEL_INFO, "Default content inserted");
 		} else {
 			Logger::logMessage(Logger::LEVEL_ERROR, "Failed to insert default content");
@@ -925,7 +926,7 @@ class Installer
 		}
 
 		Logger::logMessage(Logger::LEVEL_USER, "Creating databases initial permissions");
-		if (OsUtils::execute(sprintf("%s %s/deployment/base/scripts/insertPermissions.php", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)))) {
+		if (OsUtils::execute(sprintf('"%s" %s/deployment/base/scripts/insertPermissions.php', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)))) {
 			Logger::logMessage(Logger::LEVEL_INFO, "Default permissions inserted");
 		} else {
 			Logger::logMessage(Logger::LEVEL_ERROR, "Failed to insert permissions");
@@ -940,7 +941,7 @@ class Installer
 				continue;
 				
 			Logger::logMessage(Logger::LEVEL_USER, "Creating databases initial $component permissions");
-			if (OsUtils::execute(sprintf("%s %s/deployment/base/scripts/insertPermissions.php -d $componentPermissionsDir", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)))) {
+			if (OsUtils::execute(sprintf("\"%s\" %s/deployment/base/scripts/insertPermissions.php -d $componentPermissionsDir", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)))) {
 				Logger::logMessage(Logger::LEVEL_INFO, "Default $component permissions inserted");
 			} else {
 				Logger::logMessage(Logger::LEVEL_ERROR, "Failed to insert $component permissions");
@@ -991,7 +992,7 @@ class Installer
 		if(AppConfig::get(AppConfigAttribute::UPGRADE_FROM_VERSION))
 		{
 			Logger::logMessage(Logger::LEVEL_USER, "Upgrading existing content");
-			$cmd = sprintf('%s %s/deployment/updates/update.php -u "%s"', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), AppConfig::get(AppConfigAttribute::DB_ROOT_USER));
+			$cmd = sprintf('"%s" %s/deployment/updates/update.php -u "%s"', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR), AppConfig::get(AppConfigAttribute::DB_ROOT_USER));
 			if(AppConfig::get(AppConfigAttribute::DB_ROOT_PASS))
 				$cmd .= sprintf(' -p "%s"', AppConfig::get(AppConfigAttribute::DB_ROOT_PASS));
 			$cmd .= ' -s';
@@ -1061,7 +1062,7 @@ class Installer
 			
 		$this->determineInsertedContent ();
 		Logger::logMessage(Logger::LEVEL_USER, "Creating partner template content");
-		if (OsUtils::execute(sprintf("%s %s/deployment/base/scripts/insertContent.php", AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)))) {
+		if (OsUtils::execute(sprintf('"%s" %s/deployment/base/scripts/insertContent.php', AppConfig::get(AppConfigAttribute::PHP_BIN), AppConfig::get(AppConfigAttribute::APP_DIR)))) {
 			Logger::logMessage(Logger::LEVEL_INFO, "Default content inserted");
 		} else {
 			Logger::logMessage(Logger::LEVEL_ERROR, "Failed to insert content");

@@ -116,9 +116,9 @@ class DatabaseUtils
 		}
 
 		if (!AppConfig::get(AppConfigAttribute::DB_ROOT_PASS)) {
-			$cmd = sprintf(AppConfig::get(AppConfigAttribute::MYSQL_BIN) . " -h%s -u%s -P%s %s < %s", AppConfig::get(AppConfigAttribute::DB1_HOST), AppConfig::get(AppConfigAttribute::DB_ROOT_USER), AppConfig::get(AppConfigAttribute::DB1_PORT), $db_name, $file);
+			$cmd = sprintf(AppConfig::get('"%s" -h%s -u%s -P%s %s < %s', AppConfigAttribute::MYSQL_BIN), AppConfig::get(AppConfigAttribute::DB1_HOST), AppConfig::get(AppConfigAttribute::DB_ROOT_USER), AppConfig::get(AppConfigAttribute::DB1_PORT), $db_name, $file);
 		} else {
-			$cmd = sprintf(AppConfig::get(AppConfigAttribute::MYSQL_BIN) . " -h%s -u%s -p%s -P%s %s < %s", AppConfig::get(AppConfigAttribute::DB1_HOST), AppConfig::get(AppConfigAttribute::DB_ROOT_USER), AppConfig::get(AppConfigAttribute::DB_ROOT_PASS), AppConfig::get(AppConfigAttribute::DB1_PORT), $db_name, $file);
+			$cmd = sprintf(AppConfig::get('"" -h%s -u%s -p%s -P%s %s < %s', AppConfigAttribute::MYSQL_BIN), AppConfig::get(AppConfigAttribute::DB1_HOST), AppConfig::get(AppConfigAttribute::DB_ROOT_USER), AppConfig::get(AppConfigAttribute::DB_ROOT_PASS), AppConfig::get(AppConfigAttribute::DB1_PORT), $db_name, $file);
 		}
 		Logger::logMessage(Logger::LEVEL_INFO, "Executing $cmd");
 		@exec($cmd . ' 2>/dev/null', $output, $return_var);

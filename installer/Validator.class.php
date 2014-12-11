@@ -324,8 +324,8 @@ class Validator
 			return;
 
 		$httpdBin = AppConfig::get(AppConfigAttribute::HTTPD_BIN);
-		$modules1 = OsUtils::executeWithOutput("$httpdBin -M", true);
-		$modules2 = OsUtils::executeWithOutput("$httpdBin -M", false);
+		$modules1 = OsUtils::executeWithOutput("\"$httpdBin\" -M", true);
+		$modules2 = OsUtils::executeWithOutput("\"$httpdBin\" -M", false);
 		
 		if(is_array($modules1) && is_array($modules2))
 			$currentModules = array_merge($modules1, $modules2);
