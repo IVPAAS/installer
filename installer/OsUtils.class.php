@@ -186,9 +186,8 @@ class OsUtils {
 			}
 			else
 			{
-				if(preg_match('/[=&]/', $value))
+				if(preg_match('/[=?{}|&~![()^]/', $value))
 					$value = '"' . trim($value, '"') . '"';
-
 				$data .= "$key=$value" . PHP_EOL;
 			}
 		}
